@@ -101,7 +101,7 @@ function json_array_decode(?string $json): array {
  * Render sleek, bold 3D cosmetic swatch droplet using Hex code.
  * Eliminates external product images, zero bandwidth cost, no copyright issues.
  */
-function render_swatch_pill(?string $hex, string $label = '', string $size = 'md'): string {
+function render_swatch_pill(?string $hex, string $label = '', string $size = 'md', bool $showLabel = false): string {
     $hasRealHex = !empty($hex) && preg_match('/^#[a-f0-9]{3,6}$/i', $hex);
     
     // Choose appropriate beauty gradient if hex is missing
@@ -125,14 +125,14 @@ function render_swatch_pill(?string $hex, string $label = '', string $size = 'md
         default => 'w-12 h-12 rounded-2xl'
     };
 
-    $html = '<div class="inline-flex items-center gap-2.5 group" title="' . htmlspecialchars($label . ($hasRealHex ? ' (' . $hex . ')' : '')) . '">';
+    $html = '<div class="inline-flex items-center gap-2 shrink-0 group" title="' . htmlspecialchars($label . ($hasRealHex ? ' (' . $hex . ')' : '')) . '">';
     $html .= '<span class="relative inline-block ' . $dimensions . ' transition-all group-hover:scale-105 shrink-0 overflow-hidden ring-2 ring-white/80 shadow-md" style="' . $bgStyle . ' box-shadow: inset 0 -3px 8px rgba(0,0,0,0.3), 0 4px 14px rgba(225,29,72,0.12);">';
     $html .= '<span class="absolute inset-0 bg-gradient-to-tr from-black/15 via-transparent to-white/40 pointer-events-none"></span>';
     $html .= '</span>';
-    if (!empty($label)) {
-        $html .= '<span class="text-sm font-semibold text-slate-800 font-sans">' . htmlspecialchars($label) . '</span>';
+    if ($showLabel && !empty($label)) {
+        $html .= '<span class="text-sm font-semibold text-slate-800 font-sans truncate">' . htmlspecialchars($label) . '</span>';
     }
-    if ($hasRealHex) {
+    if ($showLabel && $hasRealHex) {
         $html .= '<span class="text-xs font-mono text-slate-500 uppercase tracking-wider font-semibold">' . htmlspecialchars($hex) . '</span>';
     }
     $html .= '</div>';

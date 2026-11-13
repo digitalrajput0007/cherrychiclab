@@ -376,11 +376,21 @@ $faqSchema = [
                 <h3 class="font-serif text-2xl font-bold text-slate-900 mb-6">Related Formulation Benchmarks</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <?php foreach ($relatedDupes as $rel): ?>
-                        <a href="<?= ($rel['orig_cat'] === 'perfume' ? '/perfume-clone/' : '/dupe/') . urlencode($rel['slug']) ?>" class="bg-white p-4 rounded-2xl border border-slate-200 hover:border-rose-300 transition-all hover:shadow-md flex items-center gap-3.5 group">
-                            <?= render_swatch_pill($rel['dupe_swatch'], $rel['dupe_name'], 'md') ?>
-                            <div class="min-w-0 flex-1">
-                                <span class="text-sm font-bold text-slate-900 block truncate group-hover:text-rose-600 transition-colors"><?= htmlspecialchars($rel['orig_brand']) ?> Dupe</span>
-                                <span class="text-xs font-extrabold text-emerald-700 block mt-0.5">Save <?= format_inr($rel['savings_inr']) ?></span>
+                        <a href="<?= ($rel['orig_cat'] === 'perfume' ? '/perfume-clone/' : '/dupe/') . urlencode($rel['slug']) ?>" class="bg-white p-4 rounded-2xl border border-slate-200 hover:border-rose-300 transition-all hover:shadow-md flex items-center justify-between gap-3 group overflow-hidden">
+                            <div class="flex items-center gap-3 min-w-0 flex-1">
+                                <?= render_swatch_pill($rel['dupe_swatch'], $rel['dupe_name'], 'md') ?>
+                                <div class="min-w-0 flex-1">
+                                    <span class="text-xs uppercase tracking-wider font-extrabold text-slate-400 block truncate"><?= htmlspecialchars($rel['orig_brand']) ?> Dupe</span>
+                                    <h4 class="text-sm font-bold text-slate-900 truncate group-hover:text-rose-600 transition-colors mt-0.5"><?= htmlspecialchars($rel['dupe_name']) ?></h4>
+                                    <?php if (!empty($rel['dupe_swatch']) && preg_match('/^#[a-f0-9]{3,6}$/i', $rel['dupe_swatch'])): ?>
+                                        <span class="text-[11px] font-mono text-slate-400 font-semibold block mt-0.5"><?= htmlspecialchars($rel['dupe_swatch']) ?></span>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                            <div class="shrink-0 text-right">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-extrabold whitespace-nowrap shadow-2xs">
+                                    Save <?= format_inr($rel['savings_inr']) ?>
+                                </span>
                             </div>
                         </a>
                     <?php endforeach; ?>
