@@ -1,0 +1,14 @@
+# SQLite runtime WAL & lock files
+*.sqlite-shm
+*.sqlite-wal
+*.db-shm
+*.db-wal
+
+# Temporary & Log files
+*.log
+/tmp/
+
+# OS Metadata
+.DS_Store
+Thumbs.db
+desktop.ini

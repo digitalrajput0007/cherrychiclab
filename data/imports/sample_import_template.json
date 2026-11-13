@@ -1,0 +1,34 @@
+[
+    {
+        "category": "makeup",
+        "match_score": 96,
+        "comparison_summary": "Direct color swatch and wear-time match tested on Indian warm skin tone.",
+        "texture_or_longevity_notes": "Non-drying velvet matte; lasts 6-8 hours without fading.",
+        "original": {
+            "brand": "Rare Beauty",
+            "name": "Tinted Lip Oil - Serenity",
+            "mrp_inr": 2400,
+            "size_label": "3ml",
+            "swatch_hex": "#9B454A",
+            "undertone": "warm",
+            "key_actives_or_notes": [
+                "Jojoba Seed Oil",
+                "Sunflower Seed Oil",
+                "Color Reviver"
+            ]
+        },
+        "dupe": {
+            "brand": "Swiss Beauty",
+            "name": "Plump-Up Glossy Lip Oil - Muted Rose",
+            "mrp_inr": 299,
+            "size_label": "4ml",
+            "swatch_hex": "#984348",
+            "undertone": "warm",
+            "key_actives_or_notes": [
+                "Vitamin E",
+                "Rosehip Oil",
+                "High Shine Polymers"
+            ]
+        }
+    }
+]
