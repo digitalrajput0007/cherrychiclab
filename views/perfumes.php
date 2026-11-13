@@ -138,16 +138,16 @@ require_once __DIR__ . '/header.php';
         
         <!-- Controls Bar -->
         <div class="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-sm space-y-5 mb-8">
-            <!-- Search Input -->
+            <!-- Search Input (Lens with clean non-overlapping spacing) -->
             <div class="relative w-full">
-                <div class="absolute left-4 top-3.5 pointer-events-none text-slate-500">
-                    <svg class="w-6 h-6 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <circle cx="11" cy="11" r="7" stroke-width="1.5"></circle>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-4.35-4.35"></path>
+                <div class="absolute inset-y-0 left-0 pl-4.5 flex items-center pointer-events-none">
+                    <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="7" stroke-width="2"></circle>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35"></path>
                     </svg>
                 </div>
-                <input x-model="search" type="text" placeholder="Search by Designer Perfume, Scent Note (Vanilla, Oud, Citrus, Rose, Coffee), or Clone house..." class="w-full pl-13 pr-10 py-3.5 rounded-2xl border border-slate-200 text-base text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500 transition-colors font-sans bg-slate-50/50">
-                <button x-show="search.length > 0" @click="search = ''" class="absolute right-4 top-3.5 text-slate-400 hover:text-slate-700 text-sm font-bold p-1">
+                <input x-model="search" type="text" placeholder="Search by Designer Perfume, Scent Note (Vanilla, Oud, Citrus, Rose, Coffee), or Clone house..." class="w-full pl-12 pr-12 py-3.5 rounded-2xl border border-slate-200 text-base text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500 transition-colors font-sans bg-slate-50/50 shadow-xs">
+                <button x-show="search.length > 0" @click="search = ''" class="absolute inset-y-0 right-0 pr-4 flex items-center text-slate-400 hover:text-slate-700 text-sm font-bold p-1">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>

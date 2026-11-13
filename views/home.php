@@ -38,14 +38,14 @@ require_once __DIR__ . '/header.php';
             <!-- Tactile Command Search Bar -->
             <div class="max-w-2xl mx-auto pt-4">
                 <form action="/dupes" method="GET" class="relative">
-                    <div class="relative flex items-center bg-white rounded-2xl border-2 border-slate-900 shadow-md transition-all focus-within:ring-4 focus-within:ring-rose-500/15">
-                        <div class="pl-5 pr-2 text-slate-500">
-                            <svg class="w-6 h-6 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <circle cx="11" cy="11" r="7" stroke-width="1.5"></circle>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-4.35-4.35"></path>
+                    <div class="relative flex items-center bg-white rounded-2xl border-2 border-slate-900 shadow-md transition-all focus-within:ring-4 focus-within:ring-rose-500/15 overflow-hidden">
+                        <div class="pl-5 pr-3 text-slate-400 flex-shrink-0">
+                            <svg class="w-6 h-6 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="7" stroke-width="2"></circle>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35"></path>
                             </svg>
                         </div>
-                        <input name="q" x-model="heroSearch" type="text" placeholder="Type a luxury lipstick, serum, or perfume... e.g. Pillow Talk, Snail Mucin, Baccarat" class="w-full h-16 py-4 pr-36 bg-transparent text-base text-slate-900 placeholder-slate-400 focus:outline-none font-sans font-medium">
+                        <input name="q" x-model="heroSearch" type="text" placeholder="Type a luxury lipstick, serum, or perfume... e.g. Pillow Talk, Snail Mucin, Baccarat" class="w-full h-16 py-4 pr-44 pl-1 bg-transparent text-base text-slate-900 placeholder-slate-400 focus:outline-none font-sans font-medium">
                         <button type="submit" class="absolute right-2 px-6 py-3.5 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white rounded-xl text-sm font-bold shadow-md shadow-rose-600/20 transition-all duration-200">
                             Search Dupes
                         </button>

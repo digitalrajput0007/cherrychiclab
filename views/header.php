@@ -159,17 +159,23 @@ $currentRoute = $currentRoute ?? '/';
                     </a>
                 </nav>
 
-                <!-- Right Action Bar: Quick Search + Submit Button -->
+                <!-- Right Action Bar: Sleek Header Search Bar + Submit Button -->
                 <div class="hidden md:flex items-center gap-3">
-                    <a href="/dupes" class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-mono text-slate-600 bg-white border border-slate-200 hover:border-rose-400 hover:text-rose-700 transition-all shadow-xs">
-                        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
-                        <span>Search Database</span>
-                        <kbd class="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200">⌘K</kbd>
-                    </a>
+                    <!-- Inline Header Search Input (Lens cleanly positioned with zero text overlap) -->
+                    <form action="/dupes" method="GET" class="relative w-44 lg:w-52 xl:w-64">
+                        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                            <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="11" cy="11" r="7"></circle>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </div>
+                        <input name="q" type="text" placeholder="Search dupes, actives..." class="w-full pl-10 pr-8 py-2 text-xs font-medium rounded-full border border-slate-200 bg-slate-50/90 focus:bg-white focus:border-rose-500 focus:ring-2 focus:ring-rose-500/15 focus:outline-none transition-all placeholder-slate-400 text-slate-800">
+                        <span class="absolute inset-y-0 right-0 pr-2.5 flex items-center pointer-events-none text-[10px] font-mono text-slate-400 font-semibold">⌘K</span>
+                    </form>
 
-                    <button @click="requestModalOpen = true" type="button" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white transition-all shadow-md shadow-rose-600/15">
+                    <button @click="requestModalOpen = true" type="button" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white transition-all shadow-md shadow-rose-600/15 whitespace-nowrap">
                         <span>Submit Product</span>
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
                     </button>
                 </div>
 
@@ -189,8 +195,19 @@ $currentRoute = $currentRoute ?? '/';
             </div>
         </div>
 
-        <!-- Mobile Drawer Navigation -->
-        <div x-show="mobileMenuOpen" x-cloak class="md:hidden border-b border-slate-200 bg-white px-4 pt-3 pb-6 space-y-2">
+        <!-- Mobile Drawer Navigation with Integrated Search Bar -->
+        <div x-show="mobileMenuOpen" x-cloak class="md:hidden border-b border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3">
+            <!-- Mobile Search Bar -->
+            <form action="/dupes" method="GET" class="relative">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
+                    <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </div>
+                <input name="q" type="text" placeholder="Search luxury dupes, perfumes..." class="w-full pl-10 pr-4 py-2.5 text-sm rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:border-rose-500 focus:outline-none transition-colors text-slate-800">
+            </form>
+
             <a href="/dupes" @click="mobileMenuOpen = false" class="block px-4 py-3 rounded-xl text-sm font-semibold transition-all <?= $currentRoute === '/dupes' ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white font-bold shadow-sm' : 'text-slate-800 hover:bg-slate-100' ?>">
                 Dupe Index (Skincare & Makeup)
             </a>
