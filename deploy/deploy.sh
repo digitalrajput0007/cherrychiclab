@@ -25,10 +25,15 @@ fi
 
 # 3. Ensure permissions (SQLite WAL mode requires write access to the parent folder)
 echo "🔒 Enforcing permissions for www-data..."
-chown -R www-data:www-data "$APP_DIR"
-chmod -R 755 "$APP_DIR"
-chmod 775 "$APP_DIR/data"
-chmod 664 "$APP_DIR/data/cherrychic.sqlite"* || true
+SUDO=""
+if [ "$EUID" -ne 0 ]; then
+    SUDO="sudo"
+fi
+
+$SUDO chown -R www-data:www-data "$APP_DIR"
+$SUDO chmod -R 755 "$APP_DIR"
+$SUDO chmod 775 "$APP_DIR/data"
+$SUDO chmod 664 "$APP_DIR/data/cherrychic.sqlite"* 2>/dev/null || true
 
 # 4. Run database migrations & seed idempotency
 echo "🔄 Running migrations..."
@@ -40,8 +45,17 @@ php "$APP_DIR/scripts/generate_sitemap.php"
 
 # 6. Reload PHP-FPM for fresh OPcache
 echo "⚡ Reloading PHP-FPM..."
-systemctl reload php8.2-fpm || service php8.2-fpm reload || true
-systemctl reload nginx || service nginx reload || true
+$SUDO systemctl reload php8.2-fpm || $SUDO service php8.2-fpm reload || true
+$SUDO systemctl reload nginx || $SUDO service nginx reload || true
+
+# 7. Post-deploy Healthcheck
+echo "🏥 Running post-deployment health check..."
+HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "http://127.0.0.1/" || true)
+if [ "$HTTP_STATUS" = "200" ] || [ "$HTTP_STATUS" = "301" ]; then
+    echo "✅ Health check passed: HTTP $HTTP_STATUS"
+else
+    echo "⚠️ Warning: Health check returned HTTP $HTTP_STATUS. Inspect /var/log/nginx/cherrychic_error.log"
+fi
 
 echo "🎉 [CherryChic Lab] Deployment Completed Successfully!"
 

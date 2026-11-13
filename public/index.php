@@ -16,7 +16,22 @@ if ($path === '') {
     $path = '/';
 }
 
-$pdo = get_db();
+try {
+    $pdo = get_db();
+} catch (\Throwable $e) {
+    error_log('[CherryChic SRE Critical] Fatal database connection failure: ' . $e->getMessage());
+    http_response_code(503);
+    header('Retry-After: 5');
+    header('Content-Type: text/html; charset=utf-8');
+
+    $fallbackHtml = __DIR__ . '/50x.html';
+    if (file_exists($fallbackHtml)) {
+        readfile($fallbackHtml);
+    } else {
+        echo "<!DOCTYPE html><html><head><title>System Recalibrating | CherryChic Lab</title><meta http-equiv='refresh' content='5'></head><body style='font-family:sans-serif;text-align:center;padding:50px;background:#FAF8F5;'><h1>CherryChic Lab™</h1><p>Our formulation database is momentarily synchronizing live INCI benchmarks. Automatically refreshing in 5 seconds...</p></body></html>";
+    }
+    exit;
+}
 
 // -------------------------------------------------------------
 // 1. SITEMAP.XML (Programmatic SEO Feed)

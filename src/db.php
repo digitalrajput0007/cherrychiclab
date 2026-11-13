@@ -15,29 +15,64 @@ function get_db(): PDO {
         return $pdo;
     }
 
-    $dbPath = __DIR__ . '/../data/cherrychic.sqlite';
+    $dbPath = defined('CHERRYCHIC_DB_PATH') ? CHERRYCHIC_DB_PATH : (__DIR__ . '/../data/cherrychic.sqlite');
     $dbDir = dirname($dbPath);
 
     if (!is_dir($dbDir)) {
-        mkdir($dbDir, 0755, true);
+        @mkdir($dbDir, 0775, true);
     }
 
+    // High-concurrency PDO options with 10s connection timeout
     $options = [
         PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         PDO::ATTR_EMULATE_PREPARES   => false,
+        PDO::ATTR_TIMEOUT            => 10, // Wait up to 10s for locks
     ];
 
-    $pdo = new PDO('sqlite:' . $dbPath, null, null, $options);
+    $maxRetries = 3;
+    $attempt = 0;
+    $lastException = null;
 
-    // Enforce WAL mode, normal synchronous, foreign keys, and memory temp store for high concurrency
-    $pdo->exec('PRAGMA journal_mode = WAL;');
-    $pdo->exec('PRAGMA synchronous = NORMAL;');
-    $pdo->exec('PRAGMA foreign_keys = ON;');
-    $pdo->exec('PRAGMA temp_store = MEMORY;');
-    $pdo->exec('PRAGMA mmap_size = 268435456;'); // 256MB memory-mapped I/O
+    while ($attempt < $maxRetries) {
+        $attempt++;
+        try {
+            $pdo = new PDO('sqlite:' . $dbPath, null, null, $options);
 
-    return $pdo;
+            // Enforce WAL mode, 10s busy timeout, normal synchronous, and memory temp store
+            $pdo->exec('PRAGMA busy_timeout = 10000;'); // 10,000ms SQLite internal busy wait
+            $pdo->exec('PRAGMA journal_mode = WAL;');
+            $pdo->exec('PRAGMA synchronous = NORMAL;');
+            $pdo->exec('PRAGMA foreign_keys = ON;');
+            $pdo->exec('PRAGMA temp_store = MEMORY;');
+            $pdo->exec('PRAGMA wal_autocheckpoint = 1000;');
+            $pdo->exec('PRAGMA mmap_size = 268435456;'); // 256MB memory-mapped I/O
+
+            return $pdo;
+        } catch (\PDOException $e) {
+            $lastException = $e;
+            $msg = $e->getMessage();
+            $isLockOrBusy = str_contains($msg, 'database is locked') || str_contains($msg, 'database is busy');
+
+            if ($isLockOrBusy && $attempt < $maxRetries) {
+                // Exponential backoff for concurrent write queue
+                usleep($attempt * 120000);
+                continue;
+            }
+
+            // Log diagnostic info with permissions
+            $perms = file_exists($dbPath) ? substr(sprintf('%o', fileperms($dbPath)), -4) : 'none';
+            $dirPerms = is_dir($dbDir) ? substr(sprintf('%o', fileperms($dbDir)), -4) : 'none';
+            error_log(sprintf(
+                "[CherryChic SRE Alert] DB connect failed (attempt %d/%d): %s | File: %s (perms: %s) | Dir: %s (perms: %s)",
+                $attempt, $maxRetries, $msg, $dbPath, $perms, $dbDir, $dirPerms
+            ));
+
+            throw $e;
+        }
+    }
+
+    throw $lastException ?? new \RuntimeException("Unable to establish SQLite connection.");
 }
 
 /**

@@ -9,7 +9,7 @@ $pageDescription = $pageDescription ?? 'Science-backed luxury beauty dupes, Midd
 $currentRoute = $currentRoute ?? '/';
 ?>
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth bg-[#FAF8F5]">
+<html lang="en" class="scroll-smooth bg-[#FAF8F5] overflow-x-hidden">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -105,7 +105,7 @@ $currentRoute = $currentRoute ?? '/';
         }
     </style>
 </head>
-<body class="bg-lab-alabaster text-lab-obsidian font-sans antialiased min-h-screen flex flex-col selection:bg-lab-burgundy selection:text-white" x-data="{ mobileMenuOpen: false, requestModalOpen: false }">
+<body class="bg-lab-alabaster text-lab-obsidian font-sans antialiased min-h-screen flex flex-col selection:bg-lab-burgundy selection:text-white overflow-x-hidden" x-data="{ mobileMenuOpen: false, requestModalOpen: false }">
 
     <!-- Top Announcement Micro-Bar -->
     <div class="bg-lab-obsidian text-[#FAF8F5] text-[10.5px] py-1.5 px-4 text-center font-mono uppercase tracking-wider border-b border-black">
