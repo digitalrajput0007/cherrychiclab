@@ -9,7 +9,7 @@ declare(strict_types=1);
 $baseUrl = 'http://localhost:8000';
 
 $testUrls = [
-    '/' => ['CherryChic', 'Luxury formulations', 'Decoded', 'Dupe'],
+    '/' => ['CherryChic', 'Stop Overpaying for Luxury', 'Find Verified Indian Dupes'],
     '/dupes' => ['Skincare & Makeup Dupe Directory', 'Lipsticks & Makeup', 'Serums & Actives', 'View on Nykaa', 'Check Lowest Price on Amazon'],
     '/perfumes' => ['Indian Perfume Clone Finder', 'Vanilla', 'Oud', 'Beast-Mode Clone', 'Amazon'],
     '/routine-checker' => ['Skincare Conflict & Fungal Acne Analyzer', 'Molecular Compatibility'],

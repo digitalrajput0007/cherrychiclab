@@ -12,17 +12,16 @@ require_once __DIR__ . '/header.php';
 ?>
 
 <!-- Header Banner -->
-<section class="py-12 bg-lab-alabaster border-b border-lab-border" style="background: radial-gradient(circle at 50% 0%, rgba(158, 27, 50, 0.04), transparent 70%), #FAF8F5;">
+<section class="py-12 bg-gradient-to-b from-rose-50/80 via-pink-50/30 to-[#FAF8F5] border-b border-rose-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-lab-border text-lab-obsidian text-[11px] font-mono tracking-widest uppercase shadow-xs mb-3">
-                <span class="w-1.5 h-1.5 rounded-full bg-lab-cherry"></span>
-                <span>CHEMICAL & SWATCH MATCH ARCHIVE</span>
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-100 text-rose-700 border border-rose-200 text-sm font-semibold shadow-xs mb-3">
+                <span>✨ Chemical & Swatch Match Index</span>
             </div>
-            <h1 class="font-serif text-3xl sm:text-5xl font-semibold text-lab-obsidian tracking-tight">
+            <h1 class="font-serif text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
                 Skincare & Makeup Dupe Directory
             </h1>
-            <p class="text-xs sm:text-sm text-lab-graphite mt-3 leading-relaxed font-sans max-w-2xl">
+            <p class="text-base text-slate-600 mt-3 leading-relaxed font-sans max-w-2xl">
                 Deconstructed INCI formulas, active concentrations, and color pigments. Compare luxury staples from Charlotte Tilbury, MAC, Clinique, Paula's Choice, and COSRX against lab-verified Indian alternatives on Nykaa, Tira & Amazon.
             </p>
         </div>
@@ -30,7 +29,7 @@ require_once __DIR__ . '/header.php';
 </section>
 
 <!-- Filter, Search & Dupe Cards Section (Alpine.js) -->
-<section class="py-10 bg-lab-alabaster min-h-[800px]" x-data="{
+<section class="py-10 bg-[#FAF8F5] min-h-[800px]" x-data="{
     filterCategory: 'all',
     search: '<?= htmlspecialchars($searchQuery ?? '') ?>',
     allDupes: <?= htmlspecialchars(json_encode($dupesList)) ?>,
@@ -89,42 +88,42 @@ require_once __DIR__ . '/header.php';
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <!-- Controls: Sticky Instant Search & Category Filter Pills -->
-        <div class="bg-white p-5 rounded-2xl border border-lab-border shadow-xs space-y-4 mb-8">
+        <div class="bg-white p-6 rounded-3xl border border-slate-200/90 shadow-sm space-y-5 mb-8">
             <!-- Instant Search Input -->
             <div class="relative w-full">
-                <div class="absolute left-4 top-3.5 pointer-events-none text-lab-graphite">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="absolute left-4 top-3.5 pointer-events-none text-slate-500">
+                    <svg class="w-6 h-6 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <circle cx="11" cy="11" r="7" stroke-width="1.5"></circle>
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-4.35-4.35"></path>
                     </svg>
                 </div>
-                <input x-model="search" type="text" placeholder="Type a luxury lipstick, serum, or sunscreen... e.g., Pillow Talk, Black Honey, Snail Mucin, BHA" class="w-full pl-12 pr-10 py-3 rounded-xl border border-lab-border text-sm text-lab-obsidian placeholder-lab-graphite/60 focus:outline-none focus:border-lab-obsidian transition-colors font-sans bg-lab-alabaster/40">
-                <button x-show="search.length > 0" @click="search = ''" class="absolute right-3.5 top-3.5 text-lab-graphite hover:text-lab-obsidian text-xs font-mono p-1">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path>
+                <input x-model="search" type="text" placeholder="Type a luxury lipstick, serum, or sunscreen... e.g., Pillow Talk, Black Honey, Snail Mucin, BHA" class="w-full pl-13 pr-10 py-3.5 rounded-2xl border border-slate-200 text-base text-slate-900 placeholder-slate-400 focus:outline-none focus:border-rose-500 transition-colors font-sans bg-slate-50/50">
+                <button x-show="search.length > 0" @click="search = ''" class="absolute right-4 top-3.5 text-slate-400 hover:text-slate-700 text-sm font-bold p-1">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
             </div>
 
-            <!-- Category Pills Bar -->
+            <!-- Category Pills Bar with Vibrant Gradient Active States -->
             <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
-                <div class="flex flex-wrap items-center gap-2">
-                    <button @click="filterCategory = 'all'" :class="filterCategory === 'all' ? 'bg-lab-obsidian text-white border-lab-obsidian' : 'bg-lab-alabaster text-lab-graphite hover:text-lab-obsidian border-lab-border'" class="px-3.5 py-1.5 rounded-xl text-xs font-mono uppercase tracking-wider border transition-all">
+                <div class="flex flex-wrap items-center gap-2.5">
+                    <button @click="filterCategory = 'all'" :class="filterCategory === 'all' ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-md shadow-rose-500/20 font-bold' : 'bg-white text-slate-700 hover:text-slate-900 border border-slate-200'" class="px-5 py-2.5 rounded-xl text-sm md:text-base font-semibold transition-all">
                         All Dupes (<?= count($dupesList) ?>)
                     </button>
-                    <button @click="filterCategory = 'makeup'" :class="filterCategory === 'makeup' ? 'bg-lab-obsidian text-white border-lab-obsidian' : 'bg-lab-alabaster text-lab-graphite hover:text-lab-obsidian border-lab-border'" class="px-3.5 py-1.5 rounded-xl text-xs font-mono uppercase tracking-wider border transition-all">
+                    <button @click="filterCategory = 'makeup'" :class="filterCategory === 'makeup' ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-md shadow-rose-500/20 font-bold' : 'bg-white text-slate-700 hover:text-slate-900 border border-slate-200'" class="px-5 py-2.5 rounded-xl text-sm md:text-base font-semibold transition-all">
                         Lipsticks & Makeup
                     </button>
-                    <button @click="filterCategory = 'serum-active'" :class="filterCategory === 'serum-active' ? 'bg-lab-obsidian text-white border-lab-obsidian' : 'bg-lab-alabaster text-lab-graphite hover:text-lab-obsidian border-lab-border'" class="px-3.5 py-1.5 rounded-xl text-xs font-mono uppercase tracking-wider border transition-all">
+                    <button @click="filterCategory = 'serum-active'" :class="filterCategory === 'serum-active' ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-md shadow-rose-500/20 font-bold' : 'bg-white text-slate-700 hover:text-slate-900 border border-slate-200'" class="px-5 py-2.5 rounded-xl text-sm md:text-base font-semibold transition-all">
                         Serums & Actives
                     </button>
-                    <button @click="filterCategory = 'sunscreen-moisturizer'" :class="filterCategory === 'sunscreen-moisturizer' ? 'bg-lab-obsidian text-white border-lab-obsidian' : 'bg-lab-alabaster text-lab-graphite hover:text-lab-obsidian border-lab-border'" class="px-3.5 py-1.5 rounded-xl text-xs font-mono uppercase tracking-wider border transition-all">
-                        Sunscreens & Moistures
+                    <button @click="filterCategory = 'sunscreen-moisturizer'" :class="filterCategory === 'sunscreen-moisturizer' ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-md shadow-rose-500/20 font-bold' : 'bg-white text-slate-700 hover:text-slate-900 border border-slate-200'" class="px-5 py-2.5 rounded-xl text-sm md:text-base font-semibold transition-all">
+                        Sunscreens & Moisturizers
                     </button>
                 </div>
 
-                <div class="text-xs font-mono text-lab-graphite">
-                    Showing <span class="text-lab-obsidian font-bold" x-text="filteredDupes.length"></span> matches
+                <div class="text-sm font-semibold text-slate-500">
+                    Showing <span class="text-slate-900 font-extrabold" x-text="filteredDupes.length"></span> matches
                 </div>
             </div>
         </div>
@@ -132,38 +131,38 @@ require_once __DIR__ . '/header.php';
         <!-- Split-Ticket Dupe Cards Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <template x-for="item in filteredDupes" :key="item.slug">
-                <div class="bg-white rounded-2xl border border-lab-border p-6 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+                <div class="bg-white rounded-3xl border border-slate-200/90 p-6 shadow-sm hover:shadow-xl hover:border-rose-300 transition-all duration-300 flex flex-col justify-between group">
                     <div>
-                        <!-- Header match & savings -->
-                        <div class="flex items-center justify-between gap-2 pb-4 border-b border-lab-border">
-                            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-mono font-medium bg-lab-emerald-subtle text-lab-emerald border border-lab-emerald/20">
-                                <span x-text="item.match_score"></span>% MATCH
+                        <!-- Header match & savings badges -->
+                        <div class="flex items-center justify-between gap-2 pb-4 border-b border-slate-100">
+                            <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-sm font-bold bg-rose-50 text-rose-700 border border-rose-200">
+                                🎯 <span x-text="item.match_score"></span>% MATCH
                             </span>
-                            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-mono font-medium bg-lab-cherry-subtle text-lab-cherry border border-lab-cherry/20">
+                            <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-sm font-extrabold bg-emerald-500 text-white shadow-sm">
                                 SAVE ₹<span x-text="Number(item.savings_inr).toLocaleString('en-IN')"></span>
                             </span>
                         </div>
 
-                        <!-- 1. The Splurge (Benchmark Luxury) -->
-                        <div class="mt-5 p-3.5 rounded-xl bg-lab-alabaster border border-lab-border/80">
-                            <div class="flex items-start gap-3">
+                        <!-- 1. The Splurge Box -->
+                        <div class="mt-5 p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
+                            <div class="flex items-start gap-3.5">
                                 <div class="flex-shrink-0 pt-0.5">
                                     <template x-if="item.orig_swatch">
-                                        <div class="w-7 h-7 rounded-full shadow-inner ring-1 ring-black/10 swatch-droplet" :style="'background-color: ' + item.orig_swatch"></div>
+                                        <div class="w-12 h-12 rounded-2xl shadow-inner ring-2 ring-white swatch-droplet" :style="'background-color: ' + item.orig_swatch"></div>
                                     </template>
                                     <template x-if="!item.orig_swatch">
-                                        <div class="w-7 h-7 rounded-full bg-stone-200/70 border border-lab-border flex items-center justify-center text-lab-graphite">
-                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-slate-400 to-slate-600 text-white flex items-center justify-center shadow-inner">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
                                         </div>
                                     </template>
                                 </div>
                                 <div class="flex-1 min-w-0">
-                                    <span class="text-[9px] uppercase font-mono tracking-wider text-lab-graphite block">THE SPLURGE</span>
-                                    <h3 class="text-xs font-semibold text-lab-obsidian truncate" x-text="item.orig_brand"></h3>
-                                    <p class="text-[11px] text-lab-graphite truncate" x-text="item.orig_name"></p>
-                                    <div class="flex items-center gap-2 mt-0.5">
-                                        <span class="text-xs font-mono line-through text-stone-400">₹<span x-text="Number(item.orig_mrp).toLocaleString('en-IN')"></span></span>
-                                        <span class="text-[10px] font-mono text-lab-graphite/70" x-text="'(' + (item.orig_size || '') + ')'"></span>
+                                    <span class="text-xs uppercase font-bold tracking-wider text-slate-500 block">THE SPLURGE</span>
+                                    <h3 class="text-base md:text-lg font-bold text-slate-900 leading-snug truncate" x-text="item.orig_brand"></h3>
+                                    <p class="text-base font-medium text-slate-700 leading-snug line-clamp-2 mt-0.5" x-text="item.orig_name"></p>
+                                    <div class="flex items-center gap-2 mt-1">
+                                        <span class="text-lg font-semibold line-through text-slate-400">₹<span x-text="Number(item.orig_mrp).toLocaleString('en-IN')"></span></span>
+                                        <span class="text-xs font-semibold text-slate-500" x-text="'(' + (item.orig_size || '') + ')'"></span>
                                     </div>
                                 </div>
                             </div>
@@ -171,64 +170,64 @@ require_once __DIR__ . '/header.php';
 
                         <!-- Divider Indicator -->
                         <div class="my-3 flex items-center justify-center">
-                            <span class="px-2.5 py-0.5 rounded-full bg-white border border-lab-border text-lab-graphite text-[9px] font-mono uppercase tracking-wider">
-                                VERIFIED FORMULATION DUPE
+                            <span class="px-3 py-1 rounded-full bg-white border border-slate-200 text-slate-600 text-xs font-bold uppercase tracking-wider shadow-xs">
+                                VS INDIAN ALTERNATIVE
                             </span>
                         </div>
 
-                        <!-- 2. The Indian Dupe -->
-                        <div class="p-3.5 rounded-xl bg-white border-2 border-lab-border group-hover:border-lab-cherry/30 transition-colors">
-                            <div class="flex items-start gap-3">
+                        <!-- 2. The Indian Dupe Box (Vibrant Warm Highlight) -->
+                        <div class="p-4 rounded-2xl bg-gradient-to-br from-emerald-50/70 via-teal-50/40 to-white border-2 border-emerald-500/40 shadow-sm">
+                            <div class="flex items-start gap-3.5">
                                 <div class="flex-shrink-0 pt-0.5">
                                     <template x-if="item.dupe_swatch">
-                                        <div class="w-7 h-7 rounded-full shadow-inner ring-1 ring-black/10 swatch-droplet" :style="'background-color: ' + item.dupe_swatch"></div>
+                                        <div class="w-12 h-12 rounded-2xl shadow-inner ring-2 ring-white swatch-droplet" :style="'background-color: ' + item.dupe_swatch"></div>
                                     </template>
                                     <template x-if="!item.dupe_swatch">
-                                        <div class="w-7 h-7 rounded-full bg-lab-emerald-subtle border border-lab-emerald/30 flex items-center justify-center text-lab-emerald">
-                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path></svg>
+                                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center shadow-inner">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                         </div>
                                     </template>
                                 </div>
                                 <div class="flex-1 min-w-0">
-                                    <span class="text-[9px] uppercase font-mono tracking-wider text-lab-cherry block font-medium">VERIFIED INDIAN DUPE</span>
-                                    <h4 class="text-xs font-bold text-lab-obsidian truncate" x-text="item.dupe_brand"></h4>
-                                    <p class="text-[11px] text-lab-graphite truncate" x-text="item.dupe_name"></p>
-                                    <div class="flex items-center gap-2 mt-0.5">
-                                        <span class="text-sm font-mono font-bold text-lab-obsidian">₹<span x-text="Number(item.dupe_mrp).toLocaleString('en-IN')"></span></span>
-                                        <span class="text-[10px] font-mono text-lab-graphite/70" x-text="'(' + (item.dupe_size || '') + ')'"></span>
+                                    <span class="text-xs uppercase font-extrabold tracking-wider text-emerald-700 block">✓ VERIFIED DUPE</span>
+                                    <h4 class="text-base md:text-lg font-bold text-slate-900 leading-snug truncate" x-text="item.dupe_brand"></h4>
+                                    <p class="text-base font-medium text-slate-700 leading-snug line-clamp-2 mt-0.5" x-text="item.dupe_name"></p>
+                                    <div class="flex items-center gap-2 mt-1">
+                                        <span class="text-2xl md:text-3xl font-extrabold text-emerald-700">₹<span x-text="Number(item.dupe_mrp).toLocaleString('en-IN')"></span></span>
+                                        <span class="text-xs font-semibold text-slate-500" x-text="'(' + (item.dupe_size || '') + ')'"></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Summary -->
-                        <p class="mt-4 text-xs text-lab-graphite line-clamp-2 leading-relaxed" x-text="item.comparison_summary"></p>
+                        <!-- Summary (15px highly readable) -->
+                        <p class="mt-4 text-[15px] text-slate-600 line-clamp-2 leading-relaxed" x-text="item.comparison_summary"></p>
                     </div>
 
                     <!-- Direct Merchant Actions -->
-                    <div class="mt-6 pt-4 border-t border-lab-border space-y-2">
+                    <div class="mt-6 pt-4 border-t border-slate-100 space-y-2.5">
                         <!-- Primary Amazon Affiliate CTA -->
                         <a :href="'/buy.php?store=amazon&q=' + encodeURIComponent(item.dupe_brand + ' ' + item.dupe_name)" 
                            target="_blank" rel="nofollow sponsored noopener" 
-                           class="flex items-center justify-center gap-2 w-full py-2.5 px-3 rounded-xl text-xs font-mono uppercase tracking-wider bg-lab-obsidian hover:bg-lab-cherry text-white transition-colors duration-200 shadow-xs">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                           class="bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white font-bold text-base py-3.5 px-5 rounded-xl shadow-md shadow-rose-600/15 w-full flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
                             </svg>
                             <span>Check Lowest Price on Amazon</span>
                         </a>
 
                         <!-- Secondary Retailer & Details Links -->
-                        <div class="flex items-center justify-between gap-2">
+                        <div class="flex items-center justify-between gap-2.5">
                             <a :href="'/buy.php?store=nykaa&q=' + encodeURIComponent(item.dupe_brand + ' ' + item.dupe_name)" 
                                target="_blank" rel="nofollow sponsored noopener" 
-                               class="flex-1 text-center py-2 px-3 rounded-xl text-xs font-mono text-lab-graphite hover:text-lab-obsidian bg-lab-alabaster hover:bg-lab-silk border border-lab-border transition-colors">
+                               class="flex-1 text-center bg-pink-50 hover:bg-pink-100 text-pink-700 border border-pink-200 font-semibold text-sm py-2.5 px-4 rounded-xl transition-colors">
                                 View on Nykaa
                             </a>
                             <a :href="'/dupe/' + encodeURIComponent(item.slug)" 
-                               class="text-xs font-mono text-lab-cherry hover:text-lab-obsidian py-2 px-3 inline-flex items-center gap-1 transition-colors">
+                               class="text-sm font-bold text-rose-600 hover:text-rose-800 py-2.5 px-3 inline-flex items-center gap-1 transition-colors">
                                 <span>INCI Breakdown</span>
-                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                                 </svg>
                             </a>
                         </div>
@@ -238,21 +237,21 @@ require_once __DIR__ . '/header.php';
         </div>
 
         <!-- Zero Results State: User Request Box (AJAX submission) -->
-        <div x-show="filteredDupes.length === 0" x-cloak class="mt-12 bg-white rounded-3xl border border-lab-border p-8 sm:p-12 text-center max-w-xl mx-auto shadow-xs space-y-4">
-            <div class="w-14 h-14 rounded-2xl bg-lab-alabaster border border-lab-border text-lab-obsidian flex items-center justify-center mx-auto">
+        <div x-show="filteredDupes.length === 0" x-cloak class="mt-12 bg-white rounded-3xl border border-slate-200 p-8 sm:p-12 text-center max-w-xl mx-auto shadow-sm space-y-4">
+            <div class="w-14 h-14 rounded-2xl bg-rose-50 border border-rose-200 text-rose-600 flex items-center justify-center mx-auto">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
                 </svg>
             </div>
-            <h3 class="font-serif text-2xl font-semibold text-lab-obsidian">Formulation Not Yet Indexed</h3>
-            <p class="text-xs sm:text-sm text-lab-graphite max-w-md mx-auto leading-relaxed">
-                We haven't indexed a verified Indian dupe for "<strong class="text-lab-obsidian font-mono" x-text="search"></strong>" yet. Submit this product and our formulation team will evaluate Indian alternatives on Nykaa & Amazon.
+            <h3 class="font-serif text-2xl font-bold text-slate-900">Formulation Not Yet Indexed</h3>
+            <p class="text-base text-slate-600 max-w-md mx-auto leading-relaxed">
+                We haven't indexed a verified Indian dupe for "<strong class="text-slate-900" x-text="search"></strong>" yet. Submit this product and our formulation team will evaluate Indian alternatives on Nykaa & Amazon.
             </p>
 
             <template x-if="!requestSuccess">
                 <form @submit.prevent="submitMissingProduct" class="mt-4 flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
-                    <input x-model="search" type="text" required placeholder="Enter product name & brand" class="flex-1 px-4 py-2.5 rounded-xl border border-lab-border text-xs text-lab-obsidian placeholder-lab-graphite/60 focus:border-lab-obsidian focus:outline-none">
-                    <button type="submit" :disabled="requestLoading" class="px-5 py-2.5 text-xs font-mono uppercase tracking-wider text-white bg-lab-obsidian hover:bg-lab-cherry rounded-xl transition-all shadow-xs disabled:opacity-50">
+                    <input x-model="search" type="text" required placeholder="Enter product name & brand" class="flex-1 px-4 py-3 rounded-xl border border-slate-200 text-sm text-slate-900 placeholder-slate-400 focus:border-rose-500 focus:outline-none">
+                    <button type="submit" :disabled="requestLoading" class="px-5 py-3 text-sm font-bold text-white bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 rounded-xl transition-all shadow-md disabled:opacity-50">
                         <span x-show="!requestLoading">Request Dupe</span>
                         <span x-show="requestLoading" x-cloak>Queuing...</span>
                     </button>
@@ -260,13 +259,13 @@ require_once __DIR__ . '/header.php';
             </template>
 
             <template x-if="requestSuccess">
-                <div class="p-4 bg-lab-emerald-subtle rounded-xl border border-lab-emerald/20 text-xs text-lab-emerald font-mono">
+                <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-200 text-sm text-emerald-800 font-bold">
                     ✓ Request Queued. Our cosmetic chemists will evaluate this item in our next testing batch.
                 </div>
             </template>
 
             <template x-if="requestError">
-                <p class="text-xs text-lab-cherry font-mono" x-text="requestError"></p>
+                <p class="text-sm text-rose-600 font-bold" x-text="requestError"></p>
             </template>
         </div>
 

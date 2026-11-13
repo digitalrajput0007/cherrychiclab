@@ -37,7 +37,7 @@ echo "   ✅ Seed Data Verified.\n\n";
 // 3. Test Front-Controller Routes
 echo "3. Testing Front-Controller Routes:\n";
 $routesToTest = [
-    '/' => ['CherryChic', 'Luxury formulations'],
+    '/' => ['CherryChic', 'Stop Overpaying for Luxury'],
     '/dupes' => ['Skincare & Makeup Dupe Directory', 'Minimalist'],
     '/perfumes' => ['Indian Perfume Clone Finder', 'Armaf'],
     '/routine-checker' => ['Skincare Active Clash', 'Retinol'],

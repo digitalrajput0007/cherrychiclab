@@ -121,53 +121,53 @@ $currentRoute = $currentRoute ?? '/';
         </div>
     </div>
 
-    <!-- Floating Glassmorphism Header -->
-    <header class="sticky top-0 z-40 backdrop-blur-md bg-lab-alabaster/90 border-b border-lab-border transition-all">
+    <!-- Floating Glassmorphism Header (Sticky, Non-overlapping) -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/95 border-b border-rose-100/80 shadow-xs transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 
                 <!-- Editorial Wordmark Logo -->
                 <div class="flex items-center gap-3">
                     <a href="/" class="flex items-center gap-2.5 group">
-                        <span class="w-8 h-8 rounded-lg bg-lab-obsidian text-lab-alabaster flex items-center justify-center font-serif text-lg font-bold group-hover:bg-lab-burgundy transition-colors">
+                        <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-rose-600 to-pink-600 text-white flex items-center justify-center font-serif text-xl font-bold shadow-md shadow-rose-500/20 group-hover:scale-105 transition-transform">
                             C
                         </span>
-                        <div class="flex items-baseline gap-1">
-                            <span class="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-lab-obsidian group-hover:text-lab-burgundy transition-colors">
+                        <div class="flex items-baseline gap-1.5">
+                            <span class="font-serif text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 group-hover:text-rose-600 transition-colors">
                                 CHERRYCHIC
                             </span>
-                            <span class="font-mono text-[10px] uppercase tracking-widest font-semibold px-1.5 py-0.5 rounded bg-lab-silk text-lab-graphite border border-lab-border">
+                            <span class="font-mono text-[11px] uppercase tracking-widest font-bold px-2 py-0.5 rounded-full bg-rose-50 text-rose-700 border border-rose-200">
                                 LAB™
                             </span>
                         </div>
                     </a>
                 </div>
 
-                <!-- Desktop Clean Pill Navigation -->
-                <nav class="hidden md:flex items-center gap-1 bg-lab-silk/80 p-1 rounded-full border border-lab-border">
-                    <a href="/dupes" class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all <?= $currentRoute === '/dupes' ? 'bg-lab-obsidian text-white shadow-sm' : 'text-lab-graphite hover:text-lab-obsidian hover:bg-white/60' ?>">
+                <!-- Desktop Clean Pill Navigation with Vibrant Active Gradient -->
+                <nav class="hidden md:flex items-center gap-1.5 bg-slate-100/80 p-1.5 rounded-full border border-slate-200/80">
+                    <a href="/dupes" class="px-5 py-2 rounded-full text-sm font-semibold tracking-wide transition-all <?= $currentRoute === '/dupes' ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-md shadow-rose-500/20 font-bold' : 'text-slate-600 hover:text-slate-900 hover:bg-white/80' ?>">
                         Dupe Index
                     </a>
-                    <a href="/perfumes" class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all <?= $currentRoute === '/perfumes' ? 'bg-lab-obsidian text-white shadow-sm' : 'text-lab-graphite hover:text-lab-obsidian hover:bg-white/60' ?>">
+                    <a href="/perfumes" class="px-5 py-2 rounded-full text-sm font-semibold tracking-wide transition-all <?= $currentRoute === '/perfumes' ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-md shadow-rose-500/20 font-bold' : 'text-slate-600 hover:text-slate-900 hover:bg-white/80' ?>">
                         Fragrance Vault
                     </a>
-                    <a href="/routine-checker" class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all <?= $currentRoute === '/routine-checker' ? 'bg-lab-obsidian text-white shadow-sm' : 'text-lab-graphite hover:text-lab-obsidian hover:bg-white/60' ?>">
+                    <a href="/routine-checker" class="px-5 py-2 rounded-full text-sm font-semibold tracking-wide transition-all <?= $currentRoute === '/routine-checker' ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-md shadow-rose-500/20 font-bold' : 'text-slate-600 hover:text-slate-900 hover:bg-white/80' ?>">
                         Routine Clash Lab
                     </a>
-                    <a href="/shade-finder" class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all <?= $currentRoute === '/shade-finder' ? 'bg-lab-obsidian text-white shadow-sm' : 'text-lab-graphite hover:text-lab-obsidian hover:bg-white/60' ?>">
+                    <a href="/shade-finder" class="px-5 py-2 rounded-full text-sm font-semibold tracking-wide transition-all <?= $currentRoute === '/shade-finder' ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-md shadow-rose-500/20 font-bold' : 'text-slate-600 hover:text-slate-900 hover:bg-white/80' ?>">
                         Shade Matrix
                     </a>
                 </nav>
 
                 <!-- Right Action Bar: Quick Search + Submit Button -->
                 <div class="hidden md:flex items-center gap-3">
-                    <a href="/dupes" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono text-lab-graphite bg-white border border-lab-border hover:border-lab-obsidian hover:text-lab-obsidian transition-all shadow-xs">
-                        <svg class="w-3.5 h-3.5 text-lab-graphite" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
+                    <a href="/dupes" class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-mono text-slate-600 bg-white border border-slate-200 hover:border-rose-400 hover:text-rose-700 transition-all shadow-xs">
+                        <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
                         <span>Search Database</span>
-                        <kbd class="text-[10px] px-1 py-0.5 rounded bg-lab-silk text-lab-muted border border-lab-border">⌘K</kbd>
+                        <kbd class="text-[10px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 border border-slate-200">⌘K</kbd>
                     </a>
 
-                    <button @click="requestModalOpen = true" type="button" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-lab-obsidian hover:bg-lab-burgundy text-white transition-all shadow-xs">
+                    <button @click="requestModalOpen = true" type="button" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white transition-all shadow-md shadow-rose-600/15">
                         <span>Submit Product</span>
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
                     </button>
@@ -175,10 +175,10 @@ $currentRoute = $currentRoute ?? '/';
 
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center gap-2">
-                    <button @click="requestModalOpen = true" type="button" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-lab-obsidian text-white">
+                    <button @click="requestModalOpen = true" type="button" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-gradient-to-r from-rose-600 to-pink-600 text-white shadow-xs">
                         Submit
                     </button>
-                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="p-2 rounded-lg text-lab-obsidian hover:bg-lab-silk transition-colors" aria-label="Toggle Navigation Menu">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors" aria-label="Toggle Navigation Menu">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                             <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
                             <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
@@ -190,17 +190,17 @@ $currentRoute = $currentRoute ?? '/';
         </div>
 
         <!-- Mobile Drawer Navigation -->
-        <div x-show="mobileMenuOpen" x-cloak class="md:hidden border-b border-lab-border bg-lab-alabaster px-4 pt-3 pb-6 space-y-2">
-            <a href="/dupes" @click="mobileMenuOpen = false" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-lab-obsidian hover:bg-lab-silk <?= $currentRoute === '/dupes' ? 'bg-lab-silk font-bold' : '' ?>">
+        <div x-show="mobileMenuOpen" x-cloak class="md:hidden border-b border-slate-200 bg-white px-4 pt-3 pb-6 space-y-2">
+            <a href="/dupes" @click="mobileMenuOpen = false" class="block px-4 py-3 rounded-xl text-sm font-semibold transition-all <?= $currentRoute === '/dupes' ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white font-bold shadow-sm' : 'text-slate-800 hover:bg-slate-100' ?>">
                 Dupe Index (Skincare & Makeup)
             </a>
-            <a href="/perfumes" @click="mobileMenuOpen = false" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-lab-obsidian hover:bg-lab-silk <?= $currentRoute === '/perfumes' ? 'bg-lab-silk font-bold' : '' ?>">
+            <a href="/perfumes" @click="mobileMenuOpen = false" class="block px-4 py-3 rounded-xl text-sm font-semibold transition-all <?= $currentRoute === '/perfumes' ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white font-bold shadow-sm' : 'text-slate-800 hover:bg-slate-100' ?>">
                 Fragrance Vault (Perfume Clones)
             </a>
-            <a href="/routine-checker" @click="mobileMenuOpen = false" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-lab-obsidian hover:bg-lab-silk <?= $currentRoute === '/routine-checker' ? 'bg-lab-silk font-bold' : '' ?>">
+            <a href="/routine-checker" @click="mobileMenuOpen = false" class="block px-4 py-3 rounded-xl text-sm font-semibold transition-all <?= $currentRoute === '/routine-checker' ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white font-bold shadow-sm' : 'text-slate-800 hover:bg-slate-100' ?>">
                 Routine Clash Lab (Active Conflict & Fungal Acne)
             </a>
-            <a href="/shade-finder" @click="mobileMenuOpen = false" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-lab-obsidian hover:bg-lab-silk <?= $currentRoute === '/shade-finder' ? 'bg-lab-silk font-bold' : '' ?>">
+            <a href="/shade-finder" @click="mobileMenuOpen = false" class="block px-4 py-3 rounded-xl text-sm font-semibold transition-all <?= $currentRoute === '/shade-finder' ? 'bg-gradient-to-r from-rose-600 to-pink-600 text-white font-bold shadow-sm' : 'text-slate-800 hover:bg-slate-100' ?>">
                 Shade Matrix (Indian Complexions)
             </a>
         </div>

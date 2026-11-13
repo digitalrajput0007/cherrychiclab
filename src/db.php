@@ -2,99 +2,103 @@
 declare(strict_types=1);
 
 /**
- * CherryChic Beauty & Fragrance Lab - Database & Core Helpers
- * Optimized for low-memory PHP 8.x + SQLite WAL on 1GB VPS.
+ * CherryChic Lab - Central Database Connection & Core Query Helpers
+ * High-performance PDO SQLite with WAL journal mode.
  */
 
-define('CHERRYCHIC_ROOT', dirname(__DIR__));
-define('CHERRYCHIC_DB_PATH', CHERRYCHIC_ROOT . '/data/cherrychic.sqlite');
-
-// Load central configuration
 require_once __DIR__ . '/config.php';
 
-/**
- * Returns a shared PDO instance configured for high concurrency and ultra-low memory.
- */
 function get_db(): PDO {
     static $pdo = null;
 
-    if ($pdo === null) {
-        $dbFile = CHERRYCHIC_DB_PATH;
-        $dbDir = dirname($dbFile);
-
-        if (!is_dir($dbDir)) {
-            mkdir($dbDir, 0755, true);
-        }
-
-        $dsn = 'sqlite:' . $dbFile;
-        $options = [
-            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES   => false,
-        ];
-
-        try {
-            $pdo = new PDO($dsn, null, null, $options);
-
-            // Execute critical SQLite pragmas for high concurrent read performance & zero write lock contention
-            $pdo->exec('PRAGMA journal_mode = WAL;');
-            $pdo->exec('PRAGMA synchronous = NORMAL;');
-            $pdo->exec('PRAGMA busy_timeout = 5000;');
-            $pdo->exec('PRAGMA foreign_keys = ON;');
-            $pdo->exec('PRAGMA cache_size = -16000;'); // 16MB cache (safe for 1GB VPS)
-            $pdo->exec('PRAGMA temp_store = MEMORY;');
-        } catch (PDOException $e) {
-            error_log('[CherryChic DB Error] ' . $e->getMessage());
-            throw $e;
-        }
+    if ($pdo !== null) {
+        return $pdo;
     }
+
+    $dbPath = __DIR__ . '/../data/cherrychic.sqlite';
+    $dbDir = dirname($dbPath);
+
+    if (!is_dir($dbDir)) {
+        mkdir($dbDir, 0755, true);
+    }
+
+    $options = [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ];
+
+    $pdo = new PDO('sqlite:' . $dbPath, null, null, $options);
+
+    // Enforce WAL mode, normal synchronous, foreign keys, and memory temp store for high concurrency
+    $pdo->exec('PRAGMA journal_mode = WAL;');
+    $pdo->exec('PRAGMA synchronous = NORMAL;');
+    $pdo->exec('PRAGMA foreign_keys = ON;');
+    $pdo->exec('PRAGMA temp_store = MEMORY;');
+    $pdo->exec('PRAGMA mmap_size = 268435456;'); // 256MB memory-mapped I/O
 
     return $pdo;
 }
 
 /**
- * Format Indian currency with rupee symbol and comma formatting.
+ * Helper to safely format Indian Rupee prices (e.g. ₹1,299 or ₹14,500)
  */
 function format_inr(int|float|string|null $amount): string {
-    $val = (float)($amount ?? 0);
+    if ($amount === null || $amount === '') {
+        return '₹0';
+    }
+    $val = (float)$amount;
     return '₹' . number_format($val, 0, '.', ',');
 }
 
 /**
- * Safely parse JSON array or return empty array.
+ * JSON Decode helper with fallback
  */
-function json_array_decode(?string $raw): array {
-    if (empty($raw)) {
+function json_array_decode(?string $json): array {
+    if (empty($json)) {
         return [];
     }
-    $decoded = json_decode($raw, true);
+    $decoded = json_decode($json, true);
     return is_array($decoded) ? $decoded : [];
 }
 
 /**
- * Render sleek 3D cosmetic swatch droplet using Hex code.
+ * Render sleek, bold 3D cosmetic swatch droplet using Hex code.
  * Eliminates external product images, zero bandwidth cost, no copyright issues.
  */
 function render_swatch_pill(?string $hex, string $label = '', string $size = 'md'): string {
-    $fallbackHex = '#E8E3DC';
-    $color = (!empty($hex) && preg_match('/^#[a-f0-9]{3,6}$/i', $hex)) ? $hex : $fallbackHex;
+    $hasRealHex = !empty($hex) && preg_match('/^#[a-f0-9]{3,6}$/i', $hex);
+    
+    // Choose appropriate beauty gradient if hex is missing
+    $lowerLabel = strtolower($label);
+    if ($hasRealHex) {
+        $bgStyle = "background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.5), transparent 50%), " . htmlspecialchars($hex) . ";";
+    } elseif (str_contains($lowerLabel, 'perfume') || str_contains($lowerLabel, 'edp') || str_contains($lowerLabel, 'eau') || str_contains($lowerLabel, 'extrait') || str_contains($lowerLabel, 'parfum')) {
+        $bgStyle = "background: linear-gradient(135deg, #A855F7 0%, #6366F1 50%, #4338CA 100%);";
+    } elseif (str_contains($lowerLabel, 'sunscreen') || str_contains($lowerLabel, 'spf') || str_contains($lowerLabel, 'hydrat') || str_contains($lowerLabel, 'hyaluronic') || str_contains($lowerLabel, 'gel')) {
+        $bgStyle = "background: linear-gradient(135deg, #06B6D4 0%, #0EA5E9 50%, #0284C7 100%);";
+    } elseif (str_contains($lowerLabel, 'vitamin c') || str_contains($lowerLabel, 'retinol') || str_contains($lowerLabel, 'oil') || str_contains($lowerLabel, 'glow')) {
+        $bgStyle = "background: linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #EA580C 100%);";
+    } else {
+        $bgStyle = "background: linear-gradient(135deg, #F43F5E 0%, #E11D48 50%, #BE123C 100%);";
+    }
 
     $dimensions = match ($size) {
-        'sm' => 'w-5 h-5 rounded-full',
-        'lg' => 'w-9 h-9 rounded-2xl',
-        'xl' => 'w-11 h-11 rounded-2xl',
-        default => 'w-7 h-7 rounded-full'
+        'sm' => 'w-8 h-8 rounded-xl',
+        'lg' => 'w-14 h-14 rounded-2xl',
+        'xl' => 'w-16 h-16 rounded-2xl',
+        default => 'w-12 h-12 rounded-2xl'
     };
 
-    $html = '<div class="inline-flex items-center gap-2 group" title="' . htmlspecialchars($label . ' (' . $color . ')') . '">';
-    $html .= '<span class="relative inline-block ' . $dimensions . ' transition-all group-hover:scale-105 shrink-0 overflow-hidden ring-1 ring-[#E8E3DC]" style="background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.45), transparent 50%), ' . htmlspecialchars($color) . '; box-shadow: inset 0 -3px 6px rgba(0,0,0,0.25), 0 4px 10px rgba(20,20,19,0.08);">';
-    $html .= '<span class="absolute inset-0 bg-gradient-to-tr from-black/10 via-transparent to-white/30 pointer-events-none"></span>';
+    $html = '<div class="inline-flex items-center gap-2.5 group" title="' . htmlspecialchars($label . ($hasRealHex ? ' (' . $hex . ')' : '')) . '">';
+    $html .= '<span class="relative inline-block ' . $dimensions . ' transition-all group-hover:scale-105 shrink-0 overflow-hidden ring-2 ring-white/80 shadow-md" style="' . $bgStyle . ' box-shadow: inset 0 -3px 8px rgba(0,0,0,0.3), 0 4px 14px rgba(225,29,72,0.12);">';
+    $html .= '<span class="absolute inset-0 bg-gradient-to-tr from-black/15 via-transparent to-white/40 pointer-events-none"></span>';
     $html .= '</span>';
     if (!empty($label)) {
-        $html .= '<span class="text-xs font-medium text-[#141413] font-sans">' . htmlspecialchars($label) . '</span>';
+        $html .= '<span class="text-sm font-semibold text-slate-800 font-sans">' . htmlspecialchars($label) . '</span>';
     }
-    if (!empty($hex)) {
-        $html .= '<span class="text-[10px] font-mono text-[#5C5852] uppercase tracking-wider">' . htmlspecialchars($color) . '</span>';
+    if ($hasRealHex) {
+        $html .= '<span class="text-xs font-mono text-slate-500 uppercase tracking-wider font-semibold">' . htmlspecialchars($hex) . '</span>';
     }
     $html .= '</div>';
 
