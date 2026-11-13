@@ -9,10 +9,10 @@ declare(strict_types=1);
 $baseUrl = 'http://localhost:8000';
 
 $testUrls = [
-    '/' => ['CherryChic', 'Stop Overpaying for Luxury', 'Dupe Finder'],
+    '/' => ['CherryChic', 'Luxury formulations', 'Decoded', 'Dupe'],
     '/dupes' => ['Skincare & Makeup Dupe Directory', 'Lipsticks & Makeup', 'Serums & Actives', 'View on Nykaa', 'Check Lowest Price on Amazon'],
     '/perfumes' => ['Indian Perfume Clone Finder', 'Vanilla', 'Oud', 'Beast-Mode Clone', 'Amazon'],
-    '/routine-checker' => ['Skincare Conflict & Fungal Acne Analyzer', 'Clinical Conflict Report', 'Safe to Layer'],
+    '/routine-checker' => ['Skincare Conflict & Fungal Acne Analyzer', 'Molecular Compatibility'],
     '/shade-finder' => ['Cross-Brand Indian Shade Matcher', 'MAC Studio Fix NC35', 'Wheatish', 'Maybelline'],
     '/dupe/estee-lauder-advanced-night-repair-dupe' => ['Estée Lauder', 'Minimalist', 'FAQPage', 'Frequently Asked Questions'],
     '/dupe/clinique-black-honey-dupe-elf-ecstatic' => ['Clinique', 'Black Honey', 'e.l.f.', 'FAQPage'],

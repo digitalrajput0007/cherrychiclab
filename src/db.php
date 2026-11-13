@@ -72,27 +72,29 @@ function json_array_decode(?string $raw): array {
 }
 
 /**
- * Render sleek CSS glossy color swatch pill using Hex code.
+ * Render sleek 3D cosmetic swatch droplet using Hex code.
  * Eliminates external product images, zero bandwidth cost, no copyright issues.
  */
 function render_swatch_pill(?string $hex, string $label = '', string $size = 'md'): string {
-    $fallbackHex = '#E2E8F0';
+    $fallbackHex = '#E8E3DC';
     $color = (!empty($hex) && preg_match('/^#[a-f0-9]{3,6}$/i', $hex)) ? $hex : $fallbackHex;
 
     $dimensions = match ($size) {
-        'sm' => 'w-5 h-5',
-        'lg' => 'w-10 h-10',
-        'xl' => 'w-14 h-14',
-        default => 'w-7 h-7'
+        'sm' => 'w-5 h-5 rounded-full',
+        'lg' => 'w-9 h-9 rounded-2xl',
+        'xl' => 'w-11 h-11 rounded-2xl',
+        default => 'w-7 h-7 rounded-full'
     };
 
     $html = '<div class="inline-flex items-center gap-2 group" title="' . htmlspecialchars($label . ' (' . $color . ')') . '">';
-    $html .= '<span class="relative inline-block ' . $dimensions . ' rounded-full shadow-inner ring-2 ring-white/80 dark:ring-stone-800 transition-transform group-hover:scale-110 overflow-hidden" style="background-color: ' . htmlspecialchars($color) . ';">';
-    // Glossy reflection highlight overlay
-    $html .= '<span class="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-black/20 pointer-events-none rounded-full"></span>';
+    $html .= '<span class="relative inline-block ' . $dimensions . ' transition-all group-hover:scale-105 shrink-0 overflow-hidden ring-1 ring-[#E8E3DC]" style="background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.45), transparent 50%), ' . htmlspecialchars($color) . '; box-shadow: inset 0 -3px 6px rgba(0,0,0,0.25), 0 4px 10px rgba(20,20,19,0.08);">';
+    $html .= '<span class="absolute inset-0 bg-gradient-to-tr from-black/10 via-transparent to-white/30 pointer-events-none"></span>';
     $html .= '</span>';
     if (!empty($label)) {
-        $html .= '<span class="text-xs font-medium text-stone-700 dark:text-stone-300">' . htmlspecialchars($label) . '</span>';
+        $html .= '<span class="text-xs font-medium text-[#141413] font-sans">' . htmlspecialchars($label) . '</span>';
+    }
+    if (!empty($hex)) {
+        $html .= '<span class="text-[10px] font-mono text-[#5C5852] uppercase tracking-wider">' . htmlspecialchars($color) . '</span>';
     }
     $html .= '</div>';
 

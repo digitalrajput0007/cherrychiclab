@@ -45,3 +45,4 @@ Configuration files located in `/deploy`:
 - `deploy/php-fpm-pool.conf`: Optimized PHP-FPM dynamic pool (`pm.max_children = 10`).
 - `deploy/deploy.sh`: Zero-downtime deployment script with automated SQLite backup.
 - `deploy/backup-sqlite.sh`: Automated online hot backup script.
+

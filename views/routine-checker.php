@@ -10,16 +10,17 @@ require_once __DIR__ . '/header.php';
 ?>
 
 <!-- Header Banner -->
-<section class="py-10 bg-emerald-950 text-white border-b border-emerald-900">
+<section class="py-12 bg-lab-alabaster border-b border-lab-border" style="background: radial-gradient(circle at 50% 0%, rgba(27, 67, 50, 0.05), transparent 70%), #FAF8F5;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-900 text-emerald-300 border border-emerald-700/60 text-xs font-bold uppercase tracking-wider mb-3">
-                <span>🧪 Algorithmic Formulation Laboratory</span>
-            </span>
-            <h1 class="font-serif text-3xl sm:text-4xl font-extrabold tracking-tight">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-lab-border text-lab-emerald text-[11px] font-mono tracking-widest uppercase shadow-xs mb-3">
+                <span class="w-1.5 h-1.5 rounded-full bg-lab-emerald"></span>
+                <span>BIOCHEMICAL CONFLICT & FOLLICULITIS PROTOCOL</span>
+            </div>
+            <h1 class="font-serif text-3xl sm:text-5xl font-semibold text-lab-obsidian tracking-tight">
                 Skincare Conflict & Fungal Acne Analyzer
             </h1>
-            <p class="text-sm text-emerald-100/80 mt-2 leading-relaxed">
+            <p class="text-xs sm:text-sm text-lab-graphite mt-3 leading-relaxed font-sans max-w-2xl">
                 Layering the wrong actives can strip your lipid moisture barrier, trigger post-inflammatory hyperpigmentation (PIH), or fuel stubborn forehead fungal acne (Malassezia folliculitis). Pick your actives below for an instant clinical diagnosis.
             </p>
         </div>
@@ -27,7 +28,7 @@ require_once __DIR__ . '/header.php';
 </section>
 
 <!-- Interactive Routine Builder Tool (Alpine.js) -->
-<section class="py-10 bg-stone-50 min-h-[700px]" x-data="{
+<section class="py-10 bg-lab-alabaster min-h-[800px]" x-data="{
     rules: <?= htmlspecialchars(json_encode($ingredientRules)) ?>,
     selectedSlugs: ['retinol', 'glycolic-acid'],
     presets: {
@@ -152,47 +153,52 @@ require_once __DIR__ . '/header.php';
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
-            <!-- Left Column: Actives Picker & Shelf Builder -->
+            <!-- Left Column: Chemical Vials Picker & Shelf Builder -->
             <div class="lg:col-span-6 space-y-6">
                 <!-- Preset Buttons -->
-                <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-sm">
-                    <span class="text-xs font-bold uppercase tracking-wider text-stone-500 block mb-2.5">
-                        Test 1-Click Routine Scenarios
+                <div class="bg-white p-5 rounded-2xl border border-lab-border shadow-xs">
+                    <span class="text-[11px] font-mono uppercase tracking-wider text-lab-graphite block mb-2.5">
+                        Test Clinical Regimen Scenarios:
                     </span>
                     <div class="flex flex-wrap gap-2">
-                        <button @click="loadPreset('clashDanger')" type="button" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 transition-colors">
-                            ⚠️ Barrier Damage Routine (Retinol + AHA + BPO)
+                        <button @click="loadPreset('clashDanger')" type="button" class="px-3 py-1.5 rounded-xl text-xs font-mono uppercase tracking-wider bg-lab-cherry-subtle hover:bg-lab-cherry/10 text-lab-cherry border border-lab-cherry/20 transition-colors">
+                            Barrier Damage (Retinol + AHA)
                         </button>
-                        <button @click="loadPreset('fungalDanger')" type="button" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 transition-colors">
-                            🍄 Fungal Flare Routine (Ferment + Esters + Coconut)
+                        <button @click="loadPreset('fungalDanger')" type="button" class="px-3 py-1.5 rounded-xl text-xs font-mono uppercase tracking-wider bg-lab-amber-subtle hover:bg-lab-amber/10 text-lab-amber border border-lab-amber/20 transition-colors">
+                            Fungal Flare (Ferment + Esters)
                         </button>
-                        <button @click="loadPreset('safeGlassSkin')" type="button" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 transition-colors">
-                            ✨ Safe Barrier Glow (Cica + Ceramides + Niacinamide)
+                        <button @click="loadPreset('safeGlassSkin')" type="button" class="px-3 py-1.5 rounded-xl text-xs font-mono uppercase tracking-wider bg-lab-emerald-subtle hover:bg-lab-emerald/10 text-lab-emerald border border-lab-emerald/20 transition-colors">
+                            Synergistic Barrier Glow
                         </button>
                     </div>
                 </div>
 
                 <!-- Actives Multi-Select Grid -->
-                <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm">
-                    <div class="flex items-center justify-between mb-4">
+                <div class="bg-white p-6 rounded-2xl border border-lab-border shadow-xs">
+                    <div class="flex items-center justify-between mb-4 pb-3 border-b border-lab-border">
                         <div>
-                            <h3 class="text-base font-bold text-stone-900">Pick 2 to 5 Actives from Your Shelf</h3>
-                            <span class="text-xs text-stone-500">Tap to toggle on/off</span>
+                            <h3 class="font-serif text-lg font-semibold text-lab-obsidian">Select Actives from Your Vanity</h3>
+                            <span class="text-xs text-lab-graphite">Click any ingredient vial to toggle in/out of routine</span>
                         </div>
-                        <button @click="clearAll" type="button" class="text-xs text-rose-600 hover:text-rose-800 font-semibold">
-                            Clear All
+                        <button @click="clearAll" type="button" class="text-xs font-mono uppercase tracking-wider text-lab-cherry hover:text-lab-obsidian transition-colors">
+                            Clear Shelf
                         </button>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-h-[500px] overflow-y-auto pr-1">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-h-[520px] overflow-y-auto pr-1">
                         <template x-for="rule in rules" :key="rule.slug">
-                            <button @click="toggleIngredient(rule.slug)" type="button" :class="selectedSlugs.includes(rule.slug) ? 'bg-cherry-50 border-cherry-500 text-cherry-950 ring-1 ring-cherry-500' : 'bg-stone-50 border-stone-200 text-stone-700 hover:bg-stone-100'" class="text-left p-3 rounded-xl border transition-all flex items-start gap-2.5">
-                                <span class="w-4 h-4 mt-0.5 rounded flex items-center justify-center text-[10px] font-bold border transition-colors" :class="selectedSlugs.includes(rule.slug) ? 'bg-cherry-600 text-white border-cherry-600' : 'bg-white border-stone-300 text-transparent'">
+                            <button @click="toggleIngredient(rule.slug)" type="button" :class="selectedSlugs.includes(rule.slug) ? 'bg-lab-cherry-subtle border-lab-cherry text-lab-obsidian shadow-xs' : 'bg-lab-alabaster border-lab-border text-lab-graphite hover:border-stone-400 hover:text-lab-obsidian'" class="text-left p-3 rounded-xl border transition-all flex items-start gap-2.5 group">
+                                <span class="w-4 h-4 mt-0.5 rounded flex items-center justify-center text-[10px] font-mono border transition-colors flex-shrink-0" :class="selectedSlugs.includes(rule.slug) ? 'bg-lab-cherry text-white border-lab-cherry' : 'bg-white border-lab-border text-transparent'">
                                     ✓
                                 </span>
-                                <div class="min-w-0">
-                                    <span class="block text-xs font-bold truncate" x-text="rule.name"></span>
-                                    <span class="block text-[10px] text-stone-500 truncate" x-text="rule.category"></span>
+                                <div class="min-w-0 flex-1">
+                                    <div class="flex items-center justify-between gap-1">
+                                        <span class="block text-xs font-semibold truncate group-hover:text-lab-obsidian" x-text="rule.name"></span>
+                                        <template x-if="Number(rule.is_fungal_acne_trigger) === 1">
+                                            <span class="px-1.5 py-0.2 rounded text-[9px] font-mono bg-lab-amber-subtle text-lab-amber border border-lab-amber/30">FA</span>
+                                        </template>
+                                    </div>
+                                    <span class="block text-[10px] font-mono text-lab-graphite truncate mt-0.5" x-text="rule.category"></span>
                                 </div>
                             </button>
                         </template>
@@ -203,44 +209,67 @@ require_once __DIR__ . '/header.php';
             <!-- Right Column: Live Clinical Diagnostic & Recommendations -->
             <div class="lg:col-span-6 space-y-6">
                 <!-- Status Report Card -->
-                <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-6">
-                    <div class="flex items-center justify-between pb-4 border-b border-stone-100">
-                        <h3 class="text-lg font-bold text-stone-900">Clinical Conflict Report</h3>
-                        <span class="text-xs font-bold px-3 py-1 rounded-full" :class="detectedClashes.length > 0 ? 'bg-rose-100 text-rose-800' : (fungalTriggers.length > 0 ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800')">
-                            <span x-text="detectedClashes.length > 0 ? '🚨 Chemical Clash Warning' : (fungalTriggers.length > 0 ? '⚠️ Fungal Alert' : '✅ 100% Safe to Layer')"></span>
+                <div class="bg-white p-6 rounded-2xl border border-lab-border shadow-xs space-y-6">
+                    <div class="flex items-center justify-between pb-4 border-b border-lab-border">
+                        <div>
+                            <span class="text-[10px] font-mono uppercase tracking-wider text-lab-graphite block">DIAGNOSTIC REPORT</span>
+                            <h3 class="font-serif text-xl font-semibold text-lab-obsidian mt-0.5">Molecular Compatibility</h3>
+                        </div>
+                        <span class="text-xs font-mono uppercase tracking-wider px-3 py-1.5 rounded-lg border" :class="detectedClashes.length > 0 ? 'bg-lab-cherry-subtle text-lab-cherry border-lab-cherry/30' : (fungalTriggers.length > 0 ? 'bg-lab-amber-subtle text-lab-amber border-lab-amber/30' : 'bg-lab-emerald-subtle text-lab-emerald border-lab-emerald/30')">
+                            <span x-text="detectedClashes.length > 0 ? 'Chemical Conflict' : (fungalTriggers.length > 0 ? 'Fungal Acne Alert' : '100% Synergistic')"></span>
                         </span>
                     </div>
 
                     <!-- Selected Actives Chip Summary -->
-                    <div class="text-xs text-stone-600">
-                        Analyzing <strong class="text-stone-900" x-text="selectedSlugs.length"></strong> ingredient(s):
-                        <div class="flex flex-wrap gap-1 mt-1.5">
+                    <div class="text-xs text-lab-graphite">
+                        Analyzing <strong class="text-lab-obsidian font-mono" x-text="selectedSlugs.length"></strong> active ingredient(s):
+                        <div class="flex flex-wrap gap-1.5 mt-2">
                             <template x-for="r in selectedRules" :key="r.slug">
-                                <span class="px-2 py-0.5 rounded text-[11px] font-medium bg-stone-100 text-stone-700">
+                                <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-lab-alabaster border border-lab-border text-lab-obsidian">
                                     <span x-text="r.name"></span>
                                 </span>
                             </template>
                         </div>
                     </div>
 
-                    <!-- 1. Clashes Warning Box -->
+                    <!-- 1. Clashes Warning Box with AM/PM Timetable -->
                     <template x-if="detectedClashes.length > 0">
                         <div class="space-y-3">
-                            <h4 class="text-xs font-bold uppercase tracking-wider text-rose-700 flex items-center gap-1.5">
-                                <span>🚨 Severe Chemical Conflicts Detected</span>
-                                <span class="px-1.5 py-0.2 rounded bg-rose-200 text-rose-900 text-[10px]" x-text="detectedClashes.length"></span>
+                            <h4 class="text-xs font-mono uppercase tracking-wider text-lab-cherry flex items-center gap-1.5">
+                                <svg class="w-4 h-4 text-lab-cherry" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                <span>Severe Chemical Conflicts Detected (<span x-text="detectedClashes.length"></span>)</span>
                             </h4>
                             <div class="space-y-3">
                                 <template x-for="(clash, idx) in detectedClashes" :key="idx">
-                                    <div class="bg-rose-50 border border-rose-200 rounded-xl p-4 text-xs space-y-1.5">
-                                        <div class="font-bold text-rose-900 flex items-center gap-1.5">
+                                    <div class="bg-lab-cherry-subtle border border-lab-cherry/20 rounded-xl p-4 text-xs space-y-2">
+                                        <div class="font-mono text-xs font-bold text-lab-cherry flex items-center gap-2">
                                             <span x-text="clash.itemA"></span>
-                                            <span class="text-rose-500 font-extrabold">✕</span>
+                                            <span class="text-lab-cherry/70">✕</span>
                                             <span x-text="clash.itemB"></span>
                                         </div>
-                                        <p class="text-rose-800 leading-relaxed text-[11px]" x-text="clash.explanation"></p>
-                                        <div class="pt-1 text-[11px] font-bold text-rose-950">
-                                            💡 Recommended Split: Use one in the morning (AM) and the other in the evening (PM), or alternate nights!
+                                        <p class="text-lab-obsidian text-xs leading-relaxed" x-text="clash.explanation"></p>
+                                        
+                                        <!-- AM / PM Timetable Solution -->
+                                        <div class="pt-2 border-t border-lab-cherry/10 grid grid-cols-2 gap-2 text-[11px]">
+                                            <div class="bg-white/80 p-2 rounded-lg border border-lab-cherry/10 flex items-center gap-2">
+                                                <svg class="w-4 h-4 text-amber-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <circle cx="12" cy="12" r="4" stroke-width="1.5"></circle>
+                                                    <path stroke-linecap="round" stroke-width="1.5" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41m14.14-14.14l-1.41 1.41"></path>
+                                                </svg>
+                                                <div>
+                                                    <strong class="block font-mono text-[9px] uppercase text-stone-500">Morning (AM)</strong>
+                                                    <span class="font-semibold text-stone-800" x-text="clash.itemA"></span>
+                                                </div>
+                                            </div>
+                                            <div class="bg-white/80 p-2 rounded-lg border border-lab-cherry/10 flex items-center gap-2">
+                                                <svg class="w-4 h-4 text-indigo-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                                                </svg>
+                                                <div>
+                                                    <strong class="block font-mono text-[9px] uppercase text-stone-500">Evening (PM)</strong>
+                                                    <span class="font-semibold text-stone-800" x-text="clash.itemB"></span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </template>
@@ -251,68 +280,72 @@ require_once __DIR__ . '/header.php';
                     <!-- 2. Fungal Acne Alert Box -->
                     <template x-if="fungalTriggers.length > 0">
                         <div class="space-y-3">
-                            <h4 class="text-xs font-bold uppercase tracking-wider text-amber-700 flex items-center gap-1.5">
-                                <span>🍄 Malassezia Fungal Acne (Folliculitis) Triggers</span>
-                                <span class="px-1.5 py-0.2 rounded bg-amber-200 text-amber-900 text-[10px]" x-text="fungalTriggers.length"></span>
+                            <h4 class="text-xs font-mono uppercase tracking-wider text-lab-amber flex items-center gap-1.5">
+                                <svg class="w-4 h-4 text-lab-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                <span>Malassezia Fungal Acne (Folliculitis) Triggers (<span x-text="fungalTriggers.length"></span>)</span>
                             </h4>
                             <div class="space-y-2">
                                 <template x-for="f in fungalTriggers" :key="f.slug">
-                                    <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs space-y-1">
-                                        <div class="font-bold text-amber-900" x-text="f.name"></div>
-                                        <p class="text-amber-800 text-[11px] leading-relaxed" x-text="f.clash_explanation"></p>
+                                    <div class="bg-lab-amber-subtle border border-lab-amber/20 rounded-xl p-3.5 text-xs space-y-1">
+                                        <div class="font-mono text-xs font-bold text-lab-amber" x-text="f.name"></div>
+                                        <p class="text-lab-obsidian text-[11px] leading-relaxed" x-text="f.clash_explanation"></p>
                                     </div>
                                 </template>
                             </div>
                         </div>
                     </template>
 
-                    <!-- 3. Comedogenic Rating -->
-                    <div class="bg-stone-50 rounded-xl p-4 border border-stone-200 flex items-center justify-between">
+                    <!-- 3. Comedogenic Rating & Pore-Clogging Meter -->
+                    <div class="bg-lab-alabaster rounded-xl p-4 border border-lab-border flex items-center justify-between">
                         <div>
-                            <span class="text-xs font-bold text-stone-900 block">Pore-Clogging (Comedogenic) Risk</span>
-                            <span class="text-[11px] text-stone-500">Highest score among selected actives</span>
+                            <span class="text-xs font-semibold text-lab-obsidian block">Pore-Clogging (Comedogenic) Index</span>
+                            <span class="text-[11px] text-lab-graphite">Highest score among selected active ingredients</span>
                         </div>
-                        <div class="flex items-center gap-1">
-                            <span class="text-lg font-extrabold" :class="maxComedogenicScore >= 3 ? 'text-rose-600' : 'text-emerald-600'" x-text="maxComedogenicScore + ' / 5'"></span>
+                        <div class="flex items-center gap-2">
+                            <div class="w-20 bg-stone-200 rounded-full h-2 overflow-hidden">
+                                <div class="h-2 rounded-full transition-all duration-500" :class="maxComedogenicScore >= 3 ? 'bg-lab-cherry' : 'bg-lab-emerald'" :style="'width: ' + ((maxComedogenicScore / 5) * 100) + '%'"></div>
+                            </div>
+                            <span class="text-base font-mono font-bold" :class="maxComedogenicScore >= 3 ? 'text-lab-cherry' : 'text-lab-emerald'" x-text="maxComedogenicScore + ' / 5'"></span>
                         </div>
                     </div>
 
                     <!-- 4. Safe Routine Affirmation -->
                     <template x-if="detectedClashes.length === 0 && fungalTriggers.length === 0 && selectedSlugs.length > 0">
-                        <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-xs text-emerald-900 space-y-1">
-                            <div class="font-bold flex items-center gap-1.5 text-emerald-800">
-                                <span>✨ 100% Synergistic Routine</span>
+                        <div class="bg-lab-emerald-subtle border border-lab-emerald/20 rounded-xl p-4 text-xs text-lab-emerald space-y-1">
+                            <div class="font-mono font-bold flex items-center gap-1.5 text-lab-emerald">
+                                <svg class="w-4 h-4 text-lab-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                <span>100% Synergistic Routine Confirmed</span>
                             </div>
-                            <p class="text-emerald-700 leading-relaxed text-[11px]">
+                            <p class="text-lab-obsidian text-[11px] leading-relaxed">
                                 None of your selected ingredients chemically degrade each other or feed fungal acne yeasts. This regimen is clinically safe to apply together.
                             </p>
                         </div>
                     </template>
 
                     <!-- 5. Recommended Clash-Free Indian Products -->
-                    <div class="pt-4 border-t border-stone-100 space-y-3">
-                        <h4 class="text-xs font-bold uppercase tracking-wider text-stone-800">
-                            Recommended Clash-Free Indian Alternatives
+                    <div class="pt-5 border-t border-lab-border space-y-3">
+                        <h4 class="text-xs font-mono uppercase tracking-wider text-lab-obsidian">
+                            Recommended Clash-Free Indian Formulations
                         </h4>
-                        <div class="space-y-2.5">
+                        <div class="space-y-3">
                             <template x-for="(prod, idx) in clashFreeRecommendations" :key="idx">
-                                <div class="bg-stone-50 p-3.5 rounded-xl border border-stone-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                                <div class="bg-lab-alabaster p-4 rounded-xl border border-lab-border flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                                     <div class="min-w-0">
-                                        <span class="text-[10px] font-bold uppercase tracking-wider text-cherry-700 block" x-text="prod.title"></span>
-                                        <h5 class="text-xs font-bold text-stone-900 truncate" x-text="prod.brand + ' ' + prod.name"></h5>
-                                        <p class="text-[11px] text-stone-500" x-text="prod.why"></p>
+                                        <span class="text-[10px] font-mono uppercase tracking-wider text-lab-cherry block font-medium" x-text="prod.title"></span>
+                                        <h5 class="text-xs font-semibold text-lab-obsidian truncate mt-0.5" x-text="prod.brand + ' ' + prod.name"></h5>
+                                        <p class="text-[11px] text-lab-graphite mt-0.5" x-text="prod.why"></p>
                                     </div>
                                     <div class="flex items-center gap-2 flex-shrink-0">
-                                        <span class="text-xs font-extrabold text-stone-900" x-text="prod.price"></span>
+                                        <span class="text-xs font-mono font-bold text-lab-obsidian mr-1" x-text="prod.price"></span>
                                         <a :href="'/buy.php?store=amazon&q=' + encodeURIComponent(prod.amazon_q)" 
                                            target="_blank" rel="nofollow sponsored noopener" 
-                                           class="px-3 py-1.5 text-xs font-extrabold rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white shadow-xs transition-colors">
-                                            🛒 Buy on Amazon
+                                           class="px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded-xl bg-lab-obsidian hover:bg-lab-cherry text-white transition-colors">
+                                            Amazon
                                         </a>
                                         <a :href="'/buy.php?store=nykaa&q=' + encodeURIComponent(prod.nykaa_q)" 
                                            target="_blank" rel="nofollow sponsored noopener" 
-                                           class="px-2.5 py-1.5 text-xs font-bold rounded-lg bg-pink-50 hover:bg-pink-100 text-pink-700 border border-pink-200/80 transition-colors">
-                                            View on Nykaa
+                                           class="px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded-xl bg-white hover:bg-lab-silk text-lab-graphite hover:text-lab-obsidian border border-lab-border transition-colors">
+                                            Nykaa
                                         </a>
                                     </div>
                                 </div>

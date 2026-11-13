@@ -4,12 +4,12 @@ declare(strict_types=1);
 /** @var string $pageDescription */
 /** @var string $currentRoute */
 
-$pageTitle = $pageTitle ?? 'CherryChic Beauty & Fragrance Lab | Indian Luxury Dupes & Clone Finder';
-$pageDescription = $pageDescription ?? 'Discover tested Indian skincare dupes, viral makeup alternatives, beast-mode perfume clones, and cross-brand foundation shade matches for Indian skin tones.';
+$pageTitle = $pageTitle ?? 'CherryChic Lab | Independent Indian Formulation & Fragrance Index';
+$pageDescription = $pageDescription ?? 'Science-backed luxury beauty dupes, Middle Eastern perfume clones, and cross-brand Indian foundation matches. 100% unsponsored lab formulations.';
 $currentRoute = $currentRoute ?? '/';
 ?>
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth bg-[#FAF8F5]">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,37 +25,46 @@ $currentRoute = $currentRoute ?? '/';
     <meta property="og:url" content="https://cherrychic.in<?= htmlspecialchars($currentRoute) ?>">
     <meta property="og:site_name" content="CherryChic Beauty Lab">
 
-    <!-- Fonts -->
+    <!-- High-Fashion Editorial Typography (Google Fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        cherry: {
-                            50: '#fff1f2',
-                            100: '#ffe4e6',
-                            200: '#fecdd3',
-                            300: '#fda4af',
-                            400: '#fb7185',
-                            500: '#f43f5e',
-                            600: '#e11d48',
-                            700: '#be123c',
-                            800: '#9f1239',
-                            900: '#881337',
-                            950: '#4c0519',
-                        },
-                        amberGold: '#d97706',
+                        lab: {
+                            alabaster: '#FAF8F5',
+                            silk: '#F3EFEA',
+                            ivory: '#FFFFFF',
+                            border: '#E8E3DC',
+                            borderDark: '#D8D1C7',
+                            obsidian: '#141413',
+                            graphite: '#5C5852',
+                            muted: '#8C877E',
+                            burgundy: '#9E1B32',
+                            burgundyDark: '#7A1324',
+                            burgundyLight: '#FBEBEF',
+                            emeraldText: '#1B4332',
+                            emeraldBg: '#E8F3EE',
+                            amberText: '#9A3412',
+                            amberBg: '#FEF3C7',
+                        }
                     },
                     fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        serif: ['"Playfair Display"', 'serif'],
+                        serif: ['"Cormorant Garamond"', '"Instrument Serif"', 'Georgia', 'serif'],
+                        display: ['"Instrument Serif"', '"Cormorant Garamond"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+                    },
+                    boxShadow: {
+                        'lab': '0 12px 32px -12px rgba(20, 20, 19, 0.05)',
+                        'lab-hover': '0 20px 40px -16px rgba(20, 20, 19, 0.1)',
+                        'swatch': 'inset 0 -3px 6px rgba(0,0,0,0.25), 0 4px 10px rgba(20,20,19,0.08)'
                     }
                 }
             }
@@ -67,114 +76,135 @@ $currentRoute = $currentRoute ?? '/';
 
     <style>
         [x-cloak] { display: none !important; }
-        .glossy-swatch {
+        
+        /* Realistic 3D Cosmetic Smear / Droplet */
+        .swatch-droplet {
             position: relative;
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.6), 0 4px 10px rgba(0,0,0,0.15);
+            box-shadow: inset 0 -3px 6px rgba(0,0,0,0.25), 0 4px 12px rgba(20,20,19,0.08);
+            border: 1px solid rgba(232, 227, 220, 0.9);
         }
-        .glossy-swatch::after {
+        .swatch-droplet::after {
             content: '';
             position: absolute;
-            top: 2px;
-            left: 15%;
-            width: 70%;
-            height: 35%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.7), rgba(255,255,255,0.05));
-            border-radius: 9999px;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(circle at 30% 28%, rgba(255,255,255,0.55), transparent 52%);
             pointer-events: none;
+        }
+
+        /* Subtle Architectural Grid Texture */
+        .lab-pattern {
+            background-image: radial-gradient(#E8E3DC 0.75px, transparent 0.75px);
+            background-size: 20px 20px;
+        }
+
+        /* Custom selection highlight */
+        ::selection {
+            background-color: #9E1B32;
+            color: #FFFFFF;
         }
     </style>
 </head>
-<body class="bg-stone-50 text-stone-900 font-sans antialiased min-h-screen flex flex-col selection:bg-cherry-500 selection:text-white" x-data="{ mobileMenuOpen: false, requestModalOpen: false }">
+<body class="bg-lab-alabaster text-lab-obsidian font-sans antialiased min-h-screen flex flex-col selection:bg-lab-burgundy selection:text-white" x-data="{ mobileMenuOpen: false, requestModalOpen: false }">
 
-    <!-- Top Announcement Bar -->
-    <div class="bg-gradient-to-r from-cherry-950 via-cherry-900 to-stone-950 text-cherry-100 text-xs py-2 px-4 text-center font-medium border-b border-cherry-800/40">
-        <span class="inline-flex items-center gap-1.5">
-            <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>Indian Beauty Lab: <strong>Save ₹8,000+</strong> on viral luxury formulas with science-verified dupes & perfume clones.</span>
-        </span>
+    <!-- Top Announcement Micro-Bar -->
+    <div class="bg-lab-obsidian text-[#FAF8F5] text-[11px] py-2 px-4 text-center font-mono uppercase tracking-wider border-b border-black">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <span class="hidden md:inline-block text-lab-muted">COSMETIC FORMULATION LAB · INDEPENDENT TESTING</span>
+            <span class="mx-auto md:mx-0">
+                INDIA'S INDEPENDENT FORMULATION & CLONE INDEX — 100% UNSPONSORED LAB DATA
+            </span>
+            <span class="hidden md:inline-flex items-center gap-1.5 text-stone-300 font-sans normal-case text-xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>200+ Verified Matches</span>
+            </span>
+        </div>
     </div>
 
-    <!-- Main Navigation Header -->
-    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-stone-200/80 shadow-sm transition-all">
+    <!-- Floating Glassmorphism Header -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-lab-alabaster/90 border-b border-lab-border transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <!-- Brand Logo -->
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Editorial Wordmark Logo -->
                 <div class="flex items-center gap-3">
-                    <a href="/" class="flex items-center gap-2 group">
-                        <span class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cherry-700 to-rose-500 flex items-center justify-center text-white text-lg font-bold shadow-md shadow-cherry-700/20 group-hover:scale-105 transition-transform">
-                            🍒
+                    <a href="/" class="flex items-center gap-2.5 group">
+                        <span class="w-8 h-8 rounded-lg bg-lab-obsidian text-lab-alabaster flex items-center justify-center font-serif text-lg font-bold group-hover:bg-lab-burgundy transition-colors">
+                            C
                         </span>
-                        <div class="flex flex-col">
-                            <span class="font-serif text-xl sm:text-2xl font-bold tracking-tight text-stone-900 group-hover:text-cherry-800 transition-colors">
-                                Cherry<span class="text-cherry-600">Chic</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-lab-obsidian group-hover:text-lab-burgundy transition-colors">
+                                CHERRYCHIC
                             </span>
-                            <span class="text-[10px] tracking-widest uppercase font-semibold text-stone-600 -mt-1">
-                                Beauty & Fragrance Lab
+                            <span class="font-mono text-[10px] uppercase tracking-widest font-semibold px-1.5 py-0.5 rounded bg-lab-silk text-lab-graphite border border-lab-border">
+                                LAB™
                             </span>
                         </div>
                     </a>
                 </div>
 
-                <!-- Desktop Nav Links -->
-                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-sm font-semibold text-stone-600">
-                    <a href="/dupes" class="px-3 py-2 rounded-lg transition-colors <?= $currentRoute === '/dupes' ? 'text-cherry-700 bg-cherry-50' : 'hover:text-cherry-700 hover:bg-stone-100' ?>">
-                        💄 Dupe Finder
+                <!-- Desktop Clean Pill Navigation -->
+                <nav class="hidden md:flex items-center gap-1 bg-lab-silk/80 p-1 rounded-full border border-lab-border">
+                    <a href="/dupes" class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all <?= $currentRoute === '/dupes' ? 'bg-lab-obsidian text-white shadow-sm' : 'text-lab-graphite hover:text-lab-obsidian hover:bg-white/60' ?>">
+                        Dupe Index
                     </a>
-                    <a href="/perfumes" class="px-3 py-2 rounded-lg transition-colors <?= $currentRoute === '/perfumes' ? 'text-cherry-700 bg-cherry-50' : 'hover:text-cherry-700 hover:bg-stone-100' ?>">
-                        ✨ Perfume Clones
+                    <a href="/perfumes" class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all <?= $currentRoute === '/perfumes' ? 'bg-lab-obsidian text-white shadow-sm' : 'text-lab-graphite hover:text-lab-obsidian hover:bg-white/60' ?>">
+                        Fragrance Vault
                     </a>
-                    <a href="/routine-checker" class="px-3 py-2 rounded-lg transition-colors <?= $currentRoute === '/routine-checker' ? 'text-cherry-700 bg-cherry-50' : 'hover:text-cherry-700 hover:bg-stone-100' ?>">
-                        🧪 Routine & Fungal Acne
+                    <a href="/routine-checker" class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all <?= $currentRoute === '/routine-checker' ? 'bg-lab-obsidian text-white shadow-sm' : 'text-lab-graphite hover:text-lab-obsidian hover:bg-white/60' ?>">
+                        Routine Clash Lab
                     </a>
-                    <a href="/shade-finder" class="px-3 py-2 rounded-lg transition-colors <?= $currentRoute === '/shade-finder' ? 'text-cherry-700 bg-cherry-50' : 'hover:text-cherry-700 hover:bg-stone-100' ?>">
-                        🎨 Shade Matcher
+                    <a href="/shade-finder" class="px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all <?= $currentRoute === '/shade-finder' ? 'bg-lab-obsidian text-white shadow-sm' : 'text-lab-graphite hover:text-lab-obsidian hover:bg-white/60' ?>">
+                        Shade Matrix
                     </a>
                 </nav>
 
-                <!-- Actions: Request Dupe Button -->
-                <div class="hidden sm:flex items-center gap-3">
-                    <button @click="requestModalOpen = true" type="button" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-cherry-700 bg-cherry-50 hover:bg-cherry-100 border border-cherry-200/80 rounded-full transition-all hover:scale-102 shadow-sm">
-                        <svg class="w-4 h-4 text-cherry-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
-                        </svg>
-                        <span>Request a Dupe</span>
+                <!-- Right Action Bar: Quick Search + Submit Button -->
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="/dupes" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono text-lab-graphite bg-white border border-lab-border hover:border-lab-obsidian hover:text-lab-obsidian transition-all shadow-xs">
+                        <svg class="w-3.5 h-3.5 text-lab-graphite" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/></svg>
+                        <span>Search Database</span>
+                        <kbd class="text-[10px] px-1 py-0.5 rounded bg-lab-silk text-lab-muted border border-lab-border">⌘K</kbd>
+                    </a>
+
+                    <button @click="requestModalOpen = true" type="button" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-lab-obsidian hover:bg-lab-burgundy text-white transition-all shadow-xs">
+                        <span>Submit Product</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
                     </button>
                 </div>
 
-                <!-- Mobile menu button -->
-                <div class="flex md:hidden">
-                    <button @click="mobileMenuOpen = !mobileMenuOpen" type="button" class="p-2 rounded-md text-stone-600 hover:text-cherry-700 hover:bg-stone-100 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                            <path x-show="mobileMenuOpen" x-cloak stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-2">
+                    <button @click="requestModalOpen = true" type="button" class="px-3 py-1.5 rounded-full text-xs font-semibold bg-lab-obsidian text-white">
+                        Submit
+                    </button>
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="p-2 rounded-lg text-lab-obsidian hover:bg-lab-silk transition-colors" aria-label="Toggle Navigation Menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                            <path x-show="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                            <path x-show="mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
                     </button>
                 </div>
+
             </div>
         </div>
 
-        <!-- Mobile Navigation Menu -->
-        <div x-show="mobileMenuOpen" x-cloak class="md:hidden bg-white border-b border-stone-200 px-4 pt-2 pb-4 space-y-1">
-            <a href="/dupes" class="block px-3 py-2 rounded-md text-base font-semibold <?= $currentRoute === '/dupes' ? 'text-cherry-700 bg-cherry-50' : 'text-stone-700 hover:bg-stone-100' ?>">
-                💄 Skincare & Makeup Dupes
+        <!-- Mobile Drawer Navigation -->
+        <div x-show="mobileMenuOpen" x-cloak class="md:hidden border-b border-lab-border bg-lab-alabaster px-4 pt-3 pb-6 space-y-2">
+            <a href="/dupes" @click="mobileMenuOpen = false" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-lab-obsidian hover:bg-lab-silk <?= $currentRoute === '/dupes' ? 'bg-lab-silk font-bold' : '' ?>">
+                Dupe Index (Skincare & Makeup)
             </a>
-            <a href="/perfumes" class="block px-3 py-2 rounded-md text-base font-semibold <?= $currentRoute === '/perfumes' ? 'text-cherry-700 bg-cherry-50' : 'text-stone-700 hover:bg-stone-100' ?>">
-                ✨ Perfume Clone Finder
+            <a href="/perfumes" @click="mobileMenuOpen = false" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-lab-obsidian hover:bg-lab-silk <?= $currentRoute === '/perfumes' ? 'bg-lab-silk font-bold' : '' ?>">
+                Fragrance Vault (Perfume Clones)
             </a>
-            <a href="/routine-checker" class="block px-3 py-2 rounded-md text-base font-semibold <?= $currentRoute === '/routine-checker' ? 'text-cherry-700 bg-cherry-50' : 'text-stone-700 hover:bg-stone-100' ?>">
-                🧪 Routine & Fungal Acne Checker
+            <a href="/routine-checker" @click="mobileMenuOpen = false" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-lab-obsidian hover:bg-lab-silk <?= $currentRoute === '/routine-checker' ? 'bg-lab-silk font-bold' : '' ?>">
+                Routine Clash Lab (Active Conflict & Fungal Acne)
             </a>
-            <a href="/shade-finder" class="block px-3 py-2 rounded-md text-base font-semibold <?= $currentRoute === '/shade-finder' ? 'text-cherry-700 bg-cherry-50' : 'text-stone-700 hover:bg-stone-100' ?>">
-                🎨 Indian Shade Matcher
+            <a href="/shade-finder" @click="mobileMenuOpen = false" class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-lab-obsidian hover:bg-lab-silk <?= $currentRoute === '/shade-finder' ? 'bg-lab-silk font-bold' : '' ?>">
+                Shade Matrix (Indian Complexions)
             </a>
-            <div class="pt-2 border-t border-stone-100">
-                <button @click="requestModalOpen = true; mobileMenuOpen = false" class="w-full text-center px-4 py-2.5 rounded-lg text-sm font-bold bg-cherry-600 text-white shadow-sm">
-                    + Request a Dupe / Product
-                </button>
-            </div>
         </div>
     </header>
 
-    <!-- Main Content Slot -->
-    <main class="flex-grow pb-16 sm:pb-0">
-
+    <!-- Main Content Container -->
+    <main class="flex-1">
