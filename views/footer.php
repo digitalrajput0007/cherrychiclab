@@ -112,9 +112,23 @@ declare(strict_types=1);
                 
                 <!-- Col 1: Editorial Identity -->
                 <div class="lg:col-span-2 space-y-4">
-                    <div class="flex items-baseline gap-2">
-                        <span class="font-serif text-2xl font-bold text-white tracking-tight">CHERRYCHIC</span>
-                        <span class="font-mono text-[10px] text-stone-400 uppercase tracking-widest px-1.5 py-0.5 rounded border border-stone-800">LAB™</span>
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 flex-shrink-0">
+                            <svg class="w-full h-full" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 52 17 C 43 25, 36 34, 37 50" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round"/>
+                                <path d="M 52 17 C 58 23, 64 32, 65 44" fill="none" stroke="#F59E0B" stroke-width="3.2" stroke-linecap="round"/>
+                                <path d="M 52 17 C 58 8, 73 8, 78 14 C 72 23, 58 23, 52 17 Z" fill="#10B981"/>
+                                <path d="M 65 44 C 70 41, 82 45, 82 58 C 82 70, 74 77, 65 77 C 56 77, 48 70, 48 58 C 48 45, 60 41, 65 44 Z" fill="#E11D48"/>
+                                <circle cx="56" cy="51" r="2.5" fill="#FFFFFF" opacity="0.8"/>
+                                <path d="M 37 49 C 42 46, 54 50, 54 64 C 54 75, 46 83, 37 83 C 27 83, 19 75, 19 64 C 19 50, 32 46, 37 49 Z" fill="#FF5376"/>
+                                <circle cx="28" cy="55" r="3" fill="#FFFFFF" opacity="0.9"/>
+                                <path d="M 85 24 Q 85 30 79 30 Q 85 30 85 36 Q 85 30 91 30 Q 85 30 85 24 Z" fill="#F59E0B"/>
+                            </svg>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                            <span class="font-serif text-2xl font-bold text-white tracking-tight">CHERRYCHIC</span>
+                            <span class="font-mono text-[10px] text-rose-300 uppercase tracking-widest px-1.5 py-0.5 rounded border border-rose-900/60 bg-rose-950/40">LAB™</span>
+                        </div>
                     </div>
                     <p class="text-xs text-stone-400 leading-relaxed max-w-sm">
                         An independent Indian cosmetic intelligence index and formulation lab. We decode luxury skincare, makeup, and perfume benchmarks into clinically verified, accessible Indian alternatives.

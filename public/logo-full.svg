@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 56" width="260" height="56" fill="none">
+  <defs>
+    <linearGradient id="chLeftFull" x1="18%" y1="12%" x2="82%" y2="88%">
+      <stop offset="0%" stop-color="#FF5376"/>
+      <stop offset="28%" stop-color="#E11D48"/>
+      <stop offset="70%" stop-color="#9E1B32"/>
+      <stop offset="100%" stop-color="#4C0519"/>
+    </linearGradient>
+    <linearGradient id="chRightFull" x1="20%" y1="15%" x2="85%" y2="85%">
+      <stop offset="0%" stop-color="#FB7185"/>
+      <stop offset="35%" stop-color="#BE123C"/>
+      <stop offset="75%" stop-color="#881337"/>
+      <stop offset="100%" stop-color="#3B0715"/>
+    </linearGradient>
+    <linearGradient id="stemGoldFull" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="50%" stop-color="#E11D48"/>
+      <stop offset="100%" stop-color="#9E1B32"/>
+    </linearGradient>
+    <linearGradient id="leafGradFull" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="60%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#064E3B"/>
+    </linearGradient>
+    <linearGradient id="specularGlowFull" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Logo Mark (scaled down to 44x44 at x=2, y=6) -->
+  <g transform="translate(2, 6) scale(0.44)">
+    <!-- Stems -->
+    <path d="M 52 17 C 43 25, 36 34, 37 50" fill="none" stroke="url(#stemGoldFull)" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M 52 17 C 58 23, 64 32, 65 44" fill="none" stroke="url(#stemGoldFull)" stroke-width="3.2" stroke-linecap="round"/>
+    <!-- Leaf -->
+    <path d="M 52 17 C 58 8, 73 8, 78 14 C 72 23, 58 23, 52 17 Z" fill="url(#leafGradFull)"/>
+    <!-- Cherries -->
+    <path d="M 65 44 C 70 41, 82 45, 82 58 C 82 70, 74 77, 65 77 C 56 77, 48 70, 48 58 C 48 45, 60 41, 65 44 Z" fill="url(#chRightFull)"/>
+    <ellipse cx="57" cy="53" rx="4.5" ry="7.5" transform="rotate(-32 57 53)" fill="url(#specularGlowFull)"/>
+    <circle cx="54" cy="49" r="1.8" fill="#FFFFFF" opacity="0.9"/>
+    
+    <path d="M 37 49 C 42 46, 54 50, 54 64 C 54 75, 46 83, 37 83 C 27 83, 19 75, 19 64 C 19 50, 32 46, 37 49 Z" fill="url(#chLeftFull)"/>
+    <ellipse cx="29" cy="58" rx="5" ry="8.5" transform="rotate(-32 29 58)" fill="url(#specularGlowFull)"/>
+    <circle cx="26" cy="53" r="2.2" fill="#FFFFFF" opacity="0.95"/>
+    <!-- Sparkle -->
+    <path d="M 85 24 Q 85 30 79 30 Q 85 30 85 36 Q 85 30 91 30 Q 85 30 85 24 Z" fill="#F59E0B"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="54" y="32" font-family="'Cormorant Garamond', 'Times New Roman', Georgia, serif" font-size="24" font-weight="800" letter-spacing="-0.5" fill="#0F172A">CHERRYCHIC</text>
+  <rect x="202" y="18" width="46" height="17" rx="8.5" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1"/>
+  <text x="225" y="30" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" letter-spacing="1" fill="#BE123C" text-anchor="middle">LAB™</text>
+  <text x="55" y="44" font-family="'JetBrains Mono', monospace" font-size="6.5" font-weight="600" letter-spacing="1.5" fill="#64748B">FORMULATION &amp; FRAGRANCE INDEX</text>
+</svg>

@@ -9,7 +9,7 @@ require_once __DIR__ . '/header.php';
 ?>
 
 <!-- Editorial Vibrant Hero Section (Non-overlapping with fixed/sticky nav) -->
-<section class="relative overflow-hidden bg-gradient-to-b from-rose-50/90 via-pink-50/40 to-[#FAF8F5] pt-24 pb-20 md:pt-32 md:pb-28 border-b border-rose-100" x-data="{ heroSearch: '' }">
+<section class="relative overflow-hidden bg-gradient-to-b from-rose-50/90 via-pink-50/40 to-[#FAF8F5] pt-16 pb-16 md:pt-20 md:pb-20 border-b border-rose-100" x-data="{ heroSearch: '' }">
     <!-- Soft Decorative radial glow -->
     <div class="absolute -top-20 -left-20 w-96 h-96 bg-rose-200/40 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute top-1/3 -right-20 w-96 h-96 bg-amber-200/30 rounded-full blur-3xl pointer-events-none"></div>
